@@ -18,7 +18,6 @@ class BasketViewController: UIViewController, QRCodeReaderViewControllerDelegate
         let builder = QRCodeReaderViewControllerBuilder {
             $0.reader = QRCodeReader(metadataObjectTypes: [.qr], captureDevicePosition: .back)
             
-            // Configure the view controller (optional)
             $0.showTorchButton        = false
             $0.showSwitchCameraButton = false
             $0.showCancelButton       = false
@@ -96,15 +95,16 @@ extension BasketViewController {
     }
     
     // MARK: - QRCodeReaderViewController Delegate Methods
+    
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         reader.stopScanning()
         
         // Parsing
-        // let html = self.parser.getHTML(from: result.value)
-        print(result.value)
-        print(parser.getArticul(from: result.value))
-        print(parser.getURL(from: parser.getArticul(from: result.value)))
-                
+         let html = self.parser.getHTML(from: result.value)
+//        print(result.value)
+//        print(parser.getArticul(from: result.value))
+//        print(parser.getURL(from: parser.getArticul(from: result.value)))
+//
         dismiss(animated: true, completion: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {

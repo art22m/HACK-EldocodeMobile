@@ -6,19 +6,22 @@
 //
 
 import Foundation
+import Ji
 
 class HTMLParser {
     func getHTML(from URLString: String) -> String? {
-        if let myURL = URL(string: URLString) {
-            do {
-                let contents = try String(contentsOf: myURL, encoding: .utf8)
-                return contents
-            } catch {
-                print("Error : \(error)")
-                return nil
-            }
+        var URLString = URLString
+        if (URLString.first != "h") {
+            print(URLString)
+            URLString.insert(contentsOf: "https://", at: URLString.startIndex)
+        }
+        let myURL = URL(string: URLString)
+        if let completeURL = myURL {
+            let doc = Ji(htmlURL: completeURL)
+            print(doc ?? "")
+            return nil
         } else {
-            print("Error: \(URLString) doesn't  URL")
+            print("Invalid url: \(URLString)")
             return nil
         }
     }
