@@ -10,7 +10,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ezR-zb-Cb1">
             <objects>
-                <navigationController id="DbP-PW-Sgc" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="BasketNC" storyboardIdentifier="BasketNC" id="DbP-PW-Sgc" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpc-JZ-4af">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -27,7 +27,7 @@
         <!--BasketViewController-->
         <scene sceneID="qtQ-dv-EZR">
             <objects>
-                <viewController title="BasketViewController" id="WE8-50-Raf" customClass="BasketViewController" customModule="ManagerTool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Basket" storyboardIdentifier="Basket" title="BasketViewController" id="WE8-50-Raf" customClass="BasketViewController" customModule="ManagerTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SGf-R3-yYZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

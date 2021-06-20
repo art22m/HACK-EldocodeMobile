@@ -12,7 +12,7 @@ import QRCodeReader
 var productsNames: [String] = ["Смартфон Apple iPhone 11 128GB Black (MHDH3RU/A)", "Кондиционер Candy ACI-09HTR03/R3", "Ноутбук Acer TravelMate TMB118-M-C6UT", "LED телевизор 50 Toshiba 50U5069", "Робот-пылесос Tefal X-Plorer Serie 40 RG7267WH", "Вентилятор напольный Electrolux EFF-113D", "Холодильник Indesit ITS 4180 W", "Погружной блендер Philips HR2545/00", "Электрическая варочная панель Samsung NZ64T3516BK"]
 
 
-class BasketViewController: UIViewController {
+class BasketViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     
     lazy var QRReaderViewController: QRCodeReaderViewController = {
         let builder = QRCodeReaderViewControllerBuilder {
@@ -28,10 +28,11 @@ class BasketViewController: UIViewController {
         
         return QRCodeReaderViewController(builder: builder)
     }()
-    
+
     @IBOutlet weak var productListTableView: UITableView!
     let noCameraAlert = UIAlertController(title: "Камера не работает", message: "Возникла ошибка при работе с камерой", preferredStyle: .alert)
     let qrCodeReaderNotAvailable = UIAlertController(title: "Устройство не поддерживает считывание QR", message: "Возникла ошибка при работе с QRCodeReader", preferredStyle: .alert)
+    let parser = HTMLParser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,10 +89,7 @@ extension BasketViewController {
     @IBAction func QRCodeButton(_ sender: Any) {
         if !checkCamera() { return }
         
-        QRReaderViewController.completionBlock = { (result: QRCodeReaderResult?) in
-            print(result ?? "No information =(")
-        }
-
+        QRReaderViewController.delegate = self
         QRReaderViewController.modalPresentationStyle = .formSheet
 
         present(QRReaderViewController, animated: true, completion: nil)
@@ -99,14 +97,35 @@ extension BasketViewController {
     
     // MARK: - QRCodeReaderViewController Delegate Methods
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
-      reader.stopScanning()
-
-      dismiss(animated: true, completion: nil)
+        reader.stopScanning()
+        
+        // Parsing
+        // let html = self.parser.getHTML(from: result.value)
+        print(result.value)
+        print(parser.getArticul(from: result.value))
+        print(parser.getURL(from: parser.getArticul(from: result.value)))
+                
+        dismiss(animated: true, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+            self.popupAddScreen()
+        }
     }
 
     func readerDidCancel(_ reader: QRCodeReaderViewController) {
-      reader.stopScanning()
+        reader.stopScanning()
+        
+        dismiss(animated: true, completion: nil)
+    }
+}
 
-      dismiss(animated: true, completion: nil)
+extension BasketViewController {
+    func popupAddScreen() {
+        let basketStoryboard = UIStoryboard(name: "AddToBasketScreen", bundle: nil)
+        let addToBasketVC = basketStoryboard.instantiateViewController(withIdentifier: "AddToBasket")
+        self.addChild(addToBasketVC)
+        addToBasketVC.view.frame = self.view.frame
+        self.view.addSubview(addToBasketVC.view)
+        addToBasketVC.didMove(toParent: self)
     }
 }
