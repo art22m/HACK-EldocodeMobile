@@ -104,11 +104,6 @@ extension BasketViewController {
       dismiss(animated: true, completion: nil)
     }
 
-    func reader(_ reader: QRCodeReaderViewController, didSwitchCamera newCaptureDevice: AVCaptureDeviceInput) {
-        
-        print(123)
-    }
-
     func readerDidCancel(_ reader: QRCodeReaderViewController) {
       reader.stopScanning()
 
