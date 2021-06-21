@@ -31,7 +31,7 @@ class BasketViewController: UIViewController, QRCodeReaderViewControllerDelegate
     @IBOutlet weak var productListTableView: UITableView!
     let noCameraAlert = UIAlertController(title: "Камера не работает", message: "Возникла ошибка при работе с камерой", preferredStyle: .alert)
     let qrCodeReaderNotAvailable = UIAlertController(title: "Устройство не поддерживает считывание QR", message: "Возникла ошибка при работе с QRCodeReader", preferredStyle: .alert)
-    let parser = HTMLParser()
+    let parser = EldoradoWebSiteParser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,10 +100,8 @@ extension BasketViewController {
         reader.stopScanning()
         
         // Parsing
-         let html = self.parser.getHTML(from: result.value)
+        let html = self.parser.getProductData(from: result.value)
 //        print(result.value)
-//        print(parser.getArticul(from: result.value))
-//        print(parser.getURL(from: parser.getArticul(from: result.value)))
 //
         dismiss(animated: true, completion: nil)
         

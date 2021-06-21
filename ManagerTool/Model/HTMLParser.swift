@@ -7,40 +7,62 @@
 
 import Foundation
 import Ji
+import SwiftSoup
 
-class HTMLParser {
-    func getHTML(from URLString: String) -> String? {
+class EldoradoWebSiteParser {
+    func getHTMLDocument(from URLString: String) -> Document? {
         var URLString = URLString
+        
+        // IF QR Code doesn't contain https protocol
         if (URLString.first != "h") {
             print(URLString)
             URLString.insert(contentsOf: "https://", at: URLString.startIndex)
         }
-        let myURL = URL(string: URLString)
-        if let completeURL = myURL {
-            let doc = Ji(htmlURL: completeURL)
-            print(doc ?? "")
-            return nil
+        
+        if let checkedURLString = URL(string: URLString) {
+            let jiDoc = Ji(htmlURL: checkedURLString)
+            do {
+                let doc = try SwiftSoup.parse(jiDoc?.description ?? "")
+                return doc
+            } catch let error {
+                print("Error with parsing: \(error)")
+                return nil
+            }
         } else {
             print("Invalid url: \(URLString)")
             return nil
         }
     }
     
-    func getArticul(from URLString: String) -> String {
-        var articul: String = ""
+    func getProductData(from URLString: String) -> (name: String?, price: String?, picture: UIImage?) {
+        let doc = getHTMLDocument(from: URLString)
+        guard doc != nil else { return (name: nil, price: nil, picture: nil) }
         
-        for c in URLString {
-            if "0" <= c && c <= "9" {
-               articul += String(c)
-            } else if (articul.count != 0) {
-                break
-            }
+        do {
+            let productNameString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-name")
+//            print(productNameString)
+//            let productNameDoc = try doc?.select("h1.catalogItemDetailHd").first()
+//            do {
+//                let productNameString = try productNameDoc?.text()
+//            }
+        } catch let error {
+            print("Error with name: \(error)")
         }
-    
-        return articul
-    }
-    
-    func getURL(from articul: String) -> String {
-        return "https://www.eldorado.ru/search/catalog.php?q=\(articul)&utf"
+        
+        do {
+            let productPriceString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-price")
+//            print(productPriceString)
+        } catch let error {
+            print("Error with price: \(error)")
+        }
+        
+        do {
+            let productPictureURLString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-picture")
+//            print(productPictureURLString)
+        } catch let error {
+            print("Error with image: \(error)")
+        }
+        
+        return(nil, nil, nil)
     }
 }

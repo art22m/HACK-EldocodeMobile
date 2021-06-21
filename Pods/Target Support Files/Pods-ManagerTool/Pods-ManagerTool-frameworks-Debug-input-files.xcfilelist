@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-ManagerTool/Pods-ManagerTool-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Ji/Ji.framework
 ${BUILT_PRODUCTS_DIR}/QRCodeReader.swift/QRCodeReader.framework
+${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework
