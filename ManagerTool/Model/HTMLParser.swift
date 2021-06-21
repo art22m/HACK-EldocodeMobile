@@ -34,35 +34,51 @@ class EldoradoWebSiteParser {
         }
     }
     
-    func getProductData(from URLString: String) -> (name: String?, price: String?, picture: UIImage?) {
+    func getProductData(from URLString: String) -> (name: String?, vendorCode: String?, price: String?, pictureURL: UIImage?) {
         let doc = getHTMLDocument(from: URLString)
-        guard doc != nil else { return (name: nil, price: nil, picture: nil) }
+        guard doc != nil else { return (name: nil, vendorCode: nil, price: nil, pictureURL: nil) }
+        
+        var productNameString: String? = nil
+        var productPriceString: String? = nil
+        var productPictureURLString: String? = nil
+        var productVendorCodeString: String? = nil
         
         do {
-            let productNameString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-name")
+//            let productNameString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-name")
 //            print(productNameString)
-//            let productNameDoc = try doc?.select("h1.catalogItemDetailHd").first()
-//            do {
-//                let productNameString = try productNameDoc?.text()
-//            }
+            let productNameDoc = try doc?.select("h1.catalogItemDetailHd").first()
+            do {
+                productNameString = try productNameDoc?.text()
+            }
         } catch let error {
             print("Error with name: \(error)")
         }
         
         do {
-            let productPriceString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-price")
-//            print(productPriceString)
+            productPriceString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-price")
+            print(productPriceString)
         } catch let error {
             print("Error with price: \(error)")
         }
         
         do {
-            let productPictureURLString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-picture")
-//            print(productPictureURLString)
+            productPictureURLString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-picture")
+            print(productPictureURLString)
+        } catch let error {
+            print("Error with image: \(error)")
+        }
+                
+        do {
+            productVendorCodeString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-id")
+            print(productVendorCodeString)
         } catch let error {
             print("Error with image: \(error)")
         }
         
-        return(nil, nil, nil)
+        return (name: productNameString, vendorCode: productVendorCodeString, price: productPriceString, picture: nil)
+    }
+    
+    func getImageByURL(url imageURL: String?) -> UIImage? {
+        
     }
 }

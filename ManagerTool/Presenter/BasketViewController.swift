@@ -9,8 +9,6 @@ import UIKit
 import AVFoundation
 import QRCodeReader
 
-var productsNames: [String] = ["Смартфон Apple iPhone 11 128GB Black (MHDH3RU/A)", "Кондиционер Candy ACI-09HTR03/R3", "Ноутбук Acer TravelMate TMB118-M-C6UT", "LED телевизор 50 Toshiba 50U5069", "Робот-пылесос Tefal X-Plorer Serie 40 RG7267WH", "Вентилятор напольный Electrolux EFF-113D", "Холодильник Indesit ITS 4180 W", "Погружной блендер Philips HR2545/00", "Электрическая варочная панель Samsung NZ64T3516BK"]
-
 
 class BasketViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     
@@ -32,6 +30,9 @@ class BasketViewController: UIViewController, QRCodeReaderViewControllerDelegate
     let noCameraAlert = UIAlertController(title: "Камера не работает", message: "Возникла ошибка при работе с камерой", preferredStyle: .alert)
     let qrCodeReaderNotAvailable = UIAlertController(title: "Устройство не поддерживает считывание QR", message: "Возникла ошибка при работе с QRCodeReader", preferredStyle: .alert)
     let parser = EldoradoWebSiteParser()
+    
+    var productsNames: [String] = ["Смартфон Apple iPhone 11 128GB Black (MHDH3RU/A)"]
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -23,8 +23,30 @@
                             <constraint firstAttribute="height" constant="60" id="v2P-rL-dWs"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of the product" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7O-zD-0g9">
-                        <rect key="frame" x="80" y="10" width="240" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Наименование" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7O-zD-0g9">
+                        <rect key="frame" x="80" y="10" width="240" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="7nW-s5-odB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цена" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uet-KZ-gjW">
+                        <rect key="frame" x="80" y="50" width="80" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="4PF-vL-4fR"/>
+                            <constraint firstAttribute="height" constant="20" id="jqR-xD-Nfe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артикул" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8jL-xR-P4Q">
+                        <rect key="frame" x="200" y="49" width="120" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="KIy-h3-Ryz"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -34,16 +56,22 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="YCZ-tb-Sqf" secondAttribute="bottom" constant="10" id="BFp-6O-Vpc"/>
                     <constraint firstItem="YCZ-tb-Sqf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="CKv-wY-Ytt"/>
+                    <constraint firstAttribute="trailing" secondItem="8jL-xR-P4Q" secondAttribute="trailing" constant="10" id="EdO-ZW-C8E"/>
+                    <constraint firstAttribute="bottom" secondItem="8jL-xR-P4Q" secondAttribute="bottom" constant="10" id="Jc0-cY-teN"/>
                     <constraint firstItem="YCZ-tb-Sqf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="LvO-Zn-QM7"/>
                     <constraint firstItem="P7O-zD-0g9" firstAttribute="leading" secondItem="YCZ-tb-Sqf" secondAttribute="trailing" constant="10" id="T9v-OB-0nw"/>
                     <constraint firstAttribute="trailing" secondItem="P7O-zD-0g9" secondAttribute="trailing" constant="10" id="XlY-Z5-sak"/>
+                    <constraint firstItem="uet-KZ-gjW" firstAttribute="leading" secondItem="YCZ-tb-Sqf" secondAttribute="trailing" constant="10" id="eAT-kX-eRI"/>
                     <constraint firstItem="P7O-zD-0g9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="nKN-Dm-YLI"/>
+                    <constraint firstAttribute="bottom" secondItem="uet-KZ-gjW" secondAttribute="bottom" constant="10" id="qGy-NB-kgl"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="productLogoImageView" destination="YCZ-tb-Sqf" id="SBC-lg-mpX"/>
                 <outlet property="productNameLabel" destination="P7O-zD-0g9" id="rjb-1Y-ylC"/>
+                <outlet property="productPriceLabel" destination="uet-KZ-gjW" id="KEg-Yq-wyw"/>
+                <outlet property="productVendorCodeLabel" destination="8jL-xR-P4Q" id="bbs-Ze-IG8"/>
             </connections>
             <point key="canvasLocation" x="128.98550724637681" y="74.330357142857139"/>
         </tableViewCell>

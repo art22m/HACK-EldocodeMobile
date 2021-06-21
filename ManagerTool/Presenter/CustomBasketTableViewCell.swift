@@ -11,7 +11,9 @@ class CustomBasketTableViewCell: UITableViewCell {
 
     @IBOutlet weak var productLogoImageView: UIImageView!
     @IBOutlet weak var productNameLabel: UILabel!
-
+    @IBOutlet weak var productPriceLabel: UILabel!
+    @IBOutlet weak var productVendorCodeLabel: UILabel!
+    
     static let identifier = "CustomBasketTableViewCell"
     static func nib() -> UINib {
         return UINib(nibName: "CustomBasketTableViewCell", bundle: nil)
