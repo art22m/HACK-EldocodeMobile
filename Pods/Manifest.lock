@@ -1,24 +1,30 @@
 PODS:
   - Ji (5.0.0)
   - QRCodeReader.swift (10.1.0)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
   - SwiftSoup (2.3.2)
 
 DEPENDENCIES:
   - Ji (~> 5.0.0)
   - QRCodeReader.swift (~> 10.1.0)
+  - SDWebImage (~> 5.0)
   - SwiftSoup
 
 SPEC REPOS:
   trunk:
     - Ji
     - QRCodeReader.swift
+    - SDWebImage
     - SwiftSoup
 
 SPEC CHECKSUMS:
   Ji: d795fed288fe78658b404c88946d753b17d8d7f4
   QRCodeReader.swift: 373a389fe9a22d513c879a32a6f647c58f4ef572
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SwiftSoup: f97bc4e988c7729d6457f9642f974c617a6e2510
 
-PODFILE CHECKSUM: d8d6f4c90183799b50411135677b25a2bf5aa7ff
+PODFILE CHECKSUM: 1ba5bcea406ece29d48b47baa347754a181f4db3
 
 COCOAPODS: 1.10.1

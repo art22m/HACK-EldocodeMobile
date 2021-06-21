@@ -31,8 +31,9 @@ class BasketViewController: UIViewController, QRCodeReaderViewControllerDelegate
     let qrCodeReaderNotAvailable = UIAlertController(title: "Устройство не поддерживает считывание QR", message: "Возникла ошибка при работе с QRCodeReader", preferredStyle: .alert)
     let parser = EldoradoWebSiteParser()
     
-    var productsNames: [String] = ["Смартфон Apple iPhone 11 128GB Black (MHDH3RU/A)"]
-
+    var productsData: [(name: String?, vendorCode: String?, price: String?, pictureURL: String?)] = [("Смартфон Apple iPhone 11 128GB Black (MHDH3RU/A)", "12345", "60000", nil)]
+    
+    weak var productDataDelegate: ProductDataDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,20 +66,20 @@ extension BasketViewController {
 
 extension BasketViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productsNames.count
+        return productsData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomBasketTableViewCell.identifier, for: indexPath) as? CustomBasketTableViewCell else { return UITableViewCell() }
         
-        cell.configure(with: .init(vendorCode: "123", name: productsNames[indexPath.row], logo: nil))
+        cell.configure(with: .init(vendorCode: productsData[indexPath.row].vendorCode, name: productsData[indexPath.row].name, price: productsData[indexPath.row].price, pictureURL: productsData[indexPath.row].pictureURL))
         return cell
     }
     
     // Swipe to delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            productsNames.remove(at: indexPath.row)
+            productsData.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -86,6 +87,7 @@ extension BasketViewController: UITableViewDataSource {
 
 extension BasketViewController {
     // MARK: - IBAction
+    
     @IBAction func QRCodeButton(_ sender: Any) {
         if !checkCamera() { return }
         
@@ -99,15 +101,13 @@ extension BasketViewController {
     
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         reader.stopScanning()
-        
-        // Parsing
-        let html = self.parser.getProductData(from: result.value)
-//        print(result.value)
-//
+        let data = parser.getProductData(from: result.value)
+        productsData.append(data)
+        productListTableView.reloadData()
         dismiss(animated: true, completion: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-            self.popupAddScreen()
+//            self.popupAddScreen()
         }
     }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CustomBasketTableViewCell: UITableViewCell {
 
@@ -28,12 +29,26 @@ class CustomBasketTableViewCell: UITableViewCell {
     func configure(with pattern: BasketCellPattern) {
         if let name = pattern.name {
             self.productNameLabel.text = name
+        } else {
+            self.productNameLabel.text = "Неизвестно"
         }
         
-        if let logo = pattern.logo {
-            self.productLogoImageView.image = logo
+        if let pictureURL = pattern.pictureURL {
+            self.productLogoImageView.sd_setImage(with: URL(string: pictureURL), placeholderImage: UIImage(named: "ProductLogoPlaceholder"))
         } else {
             self.productLogoImageView.image = UIImage(named: "ProductLogoPlaceholder")
+        }
+        
+        if let price = pattern.price {
+            self.productPriceLabel.text = price + "₽"
+        } else {
+            self.productPriceLabel.text = "Неизвестно"
+        }
+        
+        if let id = pattern.vendorCode {
+            self.productVendorCodeLabel.text = "Арт. " + id
+        } else {
+            self.productVendorCodeLabel.text = "Неизвестно"
         }
     }
     

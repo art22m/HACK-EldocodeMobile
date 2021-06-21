@@ -12,4 +12,5 @@ target 'ManagerTool' do
   pod 'QRCodeReader.swift', '~> 10.1.0'
   pod 'Ji', '~> 5.0.0'
   pod 'SwiftSoup'
+  pod 'SDWebImage', '~> 5.0'
 end

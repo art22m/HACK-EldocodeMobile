@@ -93,6 +93,8 @@
                     <connections>
                         <outlet property="addButton" destination="y4k-H2-vVB" id="Zl0-k8-eXZ"/>
                         <outlet property="cancelButton" destination="iH9-mu-9Z3" id="T2E-Vo-cuW"/>
+                        <outlet property="logoImageView" destination="trj-aK-57g" id="ltv-93-KHP"/>
+                        <outlet property="nameLabel" destination="o0l-RJ-4CG" id="Wk6-bz-aMx"/>
                         <outlet property="popupWindow" destination="cqF-OQ-ZqS" id="uhA-yh-ywX"/>
                         <outlet property="productLogoImageView" destination="trj-aK-57g" id="b2g-vY-BO8"/>
                         <outlet property="productLogoLabel" destination="o0l-RJ-4CG" id="xmO-1W-epE"/>

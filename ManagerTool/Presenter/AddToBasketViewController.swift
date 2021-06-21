@@ -6,19 +6,15 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AddToBasketViewController: UIViewController {
-
     // MARK: - IBOutlet
     
-    @IBOutlet weak var productLogoImageView: UIImageView!
-    
-    @IBOutlet weak var productLogoLabel: UILabel!
-    
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
-    
     @IBOutlet weak var addButton: UIButton!
-    
     @IBOutlet weak var popupWindow: UIView!
     
     override func viewDidLoad() {
@@ -30,8 +26,9 @@ class AddToBasketViewController: UIViewController {
         addButton.layer.cornerRadius = 10
         popupWindow.layer.cornerRadius = 20
 
-        productLogoLabel.text = "Тестовый товар"
-        productLogoImageView.image = UIImage(named: "ProductLogoPlaceholder")
+        
+//        logoImageView.sd_setImage(with: URL(string:  ?? ""), placeholderImage: UIImage(named: "ProductLogoPlaceholder"))
+//        nameLabel.text = productName != nil ? productName : "Нет названия"
         
         self.showAnimate()
         
@@ -67,6 +64,5 @@ class AddToBasketViewController: UIViewController {
                 self.view.removeFromSuperview()
             }
         }
-
     }
 }

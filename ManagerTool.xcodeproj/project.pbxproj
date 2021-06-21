@@ -20,6 +20,7 @@
 		E58D2080267EB0E30065B480 /* CustomBasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D207E267EB0E30065B480 /* CustomBasketTableViewCell.swift */; };
 		E58D2081267EB0E30065B480 /* CustomBasketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58D207F267EB0E30065B480 /* CustomBasketTableViewCell.xib */; };
 		E58D2084267EB2680065B480 /* BasketCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D2083267EB2680065B480 /* BasketCellModel.swift */; };
+		E5F09FD22681465800F59E59 /* ProductDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F09FD12681465800F59E59 /* ProductDataDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		E58D207E267EB0E30065B480 /* CustomBasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBasketTableViewCell.swift; sourceTree = "<group>"; };
 		E58D207F267EB0E30065B480 /* CustomBasketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomBasketTableViewCell.xib; sourceTree = "<group>"; };
 		E58D2083267EB2680065B480 /* BasketCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketCellModel.swift; sourceTree = "<group>"; };
+		E5F09FD12681465800F59E59 /* ProductDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataDelegate.swift; sourceTree = "<group>"; };
 		EEDFFDE8D34C6F9A11A24625 /* Pods-ManagerTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManagerTool.debug.xcconfig"; path = "Target Support Files/Pods-ManagerTool/Pods-ManagerTool.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 			children = (
 				E58D2083267EB2680065B480 /* BasketCellModel.swift */,
 				E53ED6F5267F918700C5B51C /* HTMLParser.swift */,
+				E5F09FD12681465800F59E59 /* ProductDataDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			files = (
 				E58D207B267EAA960065B480 /* BasketViewController.swift in Sources */,
 				E58D2084267EB2680065B480 /* BasketCellModel.swift in Sources */,
+				E5F09FD22681465800F59E59 /* ProductDataDelegate.swift in Sources */,
 				E50BF8CC267E94D900B6D83E /* AppDelegate.swift in Sources */,
 				E53ED6F6267F918700C5B51C /* HTMLParser.swift in Sources */,
 				E51F9E8A267FD38D00ABAC36 /* AddToBasketViewController.swift in Sources */,

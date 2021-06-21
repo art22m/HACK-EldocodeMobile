@@ -10,7 +10,7 @@ import Ji
 import SwiftSoup
 
 class EldoradoWebSiteParser {
-    func getHTMLDocument(from URLString: String) -> Document? {
+    private func getHTMLDocument(from URLString: String) -> Document? {
         var URLString = URLString
         
         // IF QR Code doesn't contain https protocol
@@ -34,7 +34,7 @@ class EldoradoWebSiteParser {
         }
     }
     
-    func getProductData(from URLString: String) -> (name: String?, vendorCode: String?, price: String?, pictureURL: UIImage?) {
+    func getProductData(from URLString: String) -> (name: String?, vendorCode: String?, price: String?, pictureURL: String?) {
         let doc = getHTMLDocument(from: URLString)
         guard doc != nil else { return (name: nil, vendorCode: nil, price: nil, pictureURL: nil) }
         
@@ -56,29 +56,26 @@ class EldoradoWebSiteParser {
         
         do {
             productPriceString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-price")
-            print(productPriceString)
+//            print(productPriceString)
         } catch let error {
             print("Error with price: \(error)")
         }
         
         do {
             productPictureURLString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-picture")
-            print(productPictureURLString)
+//            print(productPictureURLString)
         } catch let error {
             print("Error with image: \(error)")
         }
                 
         do {
             productVendorCodeString = try doc?.select("div.i-flocktory").first()?.attr("data-fl-item-id")
-            print(productVendorCodeString)
+//            print(productVendorCodeString)
         } catch let error {
             print("Error with image: \(error)")
         }
         
-        return (name: productNameString, vendorCode: productVendorCodeString, price: productPriceString, picture: nil)
+        return (name: productNameString, vendorCode: productVendorCodeString, price: productPriceString, pictureURL: productPictureURLString)
     }
     
-    func getImageByURL(url imageURL: String?) -> UIImage? {
-        
-    }
 }
