@@ -97,6 +97,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Список товаров" id="Jc7-Gx-oun">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="IWf-aY-xSh"/>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="gRM-iD-Zoy">
+                            <connections>
+                                <action selector="sendTap:" destination="WE8-50-Raf" id="eNH-c9-TeQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="accountButton" destination="ogQ-ho-hbP" id="Roy-zh-uri"/>
@@ -112,7 +117,7 @@
         <!--ProductAddMethod-->
         <scene sceneID="My8-Mk-a3C">
             <objects>
-                <viewController id="Wjy-t1-aoA" userLabel="ProductAddMethod" customClass="NewProductViewController" customModule="ManagerTool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Wjy-t1-aoA" userLabel="ProductAddMethod" customClass="ProductAddMethodsViewController" customModule="ManagerTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qdM-ov-AA9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

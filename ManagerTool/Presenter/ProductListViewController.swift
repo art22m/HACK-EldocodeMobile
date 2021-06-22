@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Firebase
 
 class ProductListViewController: UIViewController {
     // MARK: - IBOutlet
@@ -15,59 +15,67 @@ class ProductListViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var accountButton: UIButton!
     
-    var productsData: [(name: String?, vendorCode: String?, price: String?, pictureURL: String?)] = [("Смартфон Apple iPhone 11 128GB Black (MHDH3RU/A)", "12345", "60000", nil)]
+    var productsList: [Product] = [Product.init(vendorCode: "71240236", name: "Контейнер Tefal Masterseal Fresh 0,2 л (K3010112)", price: "690", pictureURL: nil, productURL: "https://www.eldorado.ru/cat/detail/kontejner-tefal-clip-close-0-2-l-k3010112/")]
     
-    weak var productDataDelegate: ProductDataDelegate?
+    private var workerID: String = ""
+    private lazy var db = Firestore.firestore()
+    private let saveActions = SaveActions()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        // Alerts
-        
+                        
         // Initialize the table
-        productListTableView.register(CustomBasketTableViewCell.nib(), forCellReuseIdentifier: CustomBasketTableViewCell.identifier)
+        productListTableView.register(CustomProductsListTableViewCell.nib(), forCellReuseIdentifier: CustomProductsListTableViewCell.identifier)
         productListTableView.dataSource = self
         productListTableView.allowsSelection = false
         productListTableView.rowHeight = 100
-    }
+}
     
     
     // MARK: - IBAction
     @IBAction func historyTap(_ sender: Any) {
-        
+        historyButton.animateBounce()
     }
     
     @IBAction func addTap(_ sender: Any) {
-        
+        addButton.animateBounce()
     }
     
     @IBAction func accountTap(_ sender: Any) {
+        accountButton.animateBounce()
+    }
+    
+    @IBAction func sendTap(_ sender: Any) {
+        saveActions.saveProducts(products: productsList, manager: workerID, customerPhone: nil)
+                
+        print("Success")
     }
 }
 
 // MARK: - TableViewDataSource
 extension ProductListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productsData.count
+        return productsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomBasketTableViewCell.identifier, for: indexPath) as? CustomBasketTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomProductsListTableViewCell.identifier, for: indexPath) as? CustomProductsListTableViewCell else { return UITableViewCell() }
         
-        cell.configure(with: .init(vendorCode: productsData[indexPath.row].vendorCode, name: productsData[indexPath.row].name, price: productsData[indexPath.row].price, pictureURL: productsData[indexPath.row].pictureURL))
+        cell.configure(with: .init(vendorCode: productsList[indexPath.row].vendorCode, name: productsList[indexPath.row].name, price: productsList[indexPath.row].price, pictureURL: productsList[indexPath.row].pictureURL))
+        
         return cell
     }
         
     // Swipe to delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            productsData.remove(at: indexPath.row)
+            productsList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
-    func addProduct(name: String?, vendorCode: String?, price: String?, pictureURL: String?) {
-        productsData.append((name: name, vendorCode:vendorCode, price: price, pictureURL: pictureURL))
+    func addProduct(product: Product) {
+        productsList.append(product)
         DispatchQueue.main.async {
             self.productListTableView.reloadData()
         }
@@ -83,5 +91,29 @@ extension ProductListViewController {
         addToBasketVC.view.frame = self.view.frame
         self.view.addSubview(addToBasketVC.view)
         addToBasketVC.didMove(toParent: self)
+    }
+}
+
+// Button Animation
+extension UIView {
+    func animateBounce(duration: TimeInterval = 0.2) {
+        self.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        UIView.animate(withDuration: 2.0,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.20),
+                       initialSpringVelocity: CGFloat(6.0),
+                       options: UIView.AnimationOptions.allowUserInteraction,
+                       animations: {
+                            self.transform = CGAffineTransform.identity
+                       },
+                       completion: { Void in()  }
+                       )
+    }
+    
+    func animateZoom(duration: TimeInterval = 0.2) {
+        self.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+            UIView.animate(withDuration: duration, delay: 0.0, options: [.curveLinear], animations: { () -> Void in
+                self.transform = .identity
+                }) { (animationCompleted: Bool) -> Void in }
     }
 }

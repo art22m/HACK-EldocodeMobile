@@ -34,9 +34,9 @@ class EldoradoWebSiteParser {
         }
     }
     
-    func getProductData(from URLString: String) -> (name: String?, vendorCode: String?, price: String?, pictureURL: String?) {
+    func getProductData(from URLString: String) -> (name: String?, vendorCode: String?, price: String?, pictureURL: String?, productURL: String) {
         let doc = getHTMLDocument(from: URLString)
-        guard doc != nil else { return (name: nil, vendorCode: nil, price: nil, pictureURL: nil) }
+        guard doc != nil else { return (name: nil, vendorCode: nil, price: nil, pictureURL: nil, productURL: URLString) }
         
         var productNameString: String? = nil
         var productPriceString: String? = nil
@@ -75,7 +75,7 @@ class EldoradoWebSiteParser {
             print("Error with image: \(error)")
         }
         
-        return (name: productNameString, vendorCode: productVendorCodeString, price: productPriceString, pictureURL: productPictureURLString)
+        return (name: productNameString, vendorCode: productVendorCodeString, price: productPriceString, pictureURL: productPictureURLString, productURL: URLString)
     }
     
 }
