@@ -14,4 +14,5 @@ target 'ManagerTool' do
   pod 'SwiftSoup'
   pod 'SDWebImage', '~> 5.0'
   pod 'Firebase/Firestore', '7.8'
+  pod 'Firebase/Auth'
 end

@@ -21,6 +21,7 @@
 		E58D2084267EB2680065B480 /* ProductsListCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D2083267EB2680065B480 /* ProductsListCellModel.swift */; };
 		E58D6F542682798600926134 /* ProductAddMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D6F532682798600926134 /* ProductAddMethodsViewController.swift */; };
 		E58D6F5C26827E6800926134 /* ManagerAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D6F5B26827E6800926134 /* ManagerAccountViewController.swift */; };
+		E58D6F772682925900926134 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D6F762682925900926134 /* DesignableView.swift */; };
 		E5F0A00B268235C600F59E59 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5F0A00A268235C600F59E59 /* GoogleService-Info.plist */; };
 		E5F0A010268243A300F59E59 /* SaveActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F0A00F268243A300F59E59 /* SaveActions.swift */; };
 		E5F0A015268270D300F59E59 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F0A014268270D300F59E59 /* Product.swift */; };
@@ -44,6 +45,7 @@
 		E58D2083267EB2680065B480 /* ProductsListCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsListCellModel.swift; sourceTree = "<group>"; };
 		E58D6F532682798600926134 /* ProductAddMethodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAddMethodsViewController.swift; sourceTree = "<group>"; };
 		E58D6F5B26827E6800926134 /* ManagerAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerAccountViewController.swift; sourceTree = "<group>"; };
+		E58D6F762682925900926134 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		E5F0A00A268235C600F59E59 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5F0A00F268243A300F59E59 /* SaveActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActions.swift; sourceTree = "<group>"; };
 		E5F0A014268270D300F59E59 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				E58D207F267EB0E30065B480 /* CustomBasketTableViewCell.xib */,
 				E50BF8D1267E94D900B6D83E /* Main.storyboard */,
 				E50BF8D6267E94E100B6D83E /* LaunchScreen.storyboard */,
+				E58D6F762682925900926134 /* DesignableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				E5F0A010268243A300F59E59 /* SaveActions.swift in Sources */,
 				E58D6F542682798600926134 /* ProductAddMethodsViewController.swift in Sources */,
 				E51F9E8A267FD38D00ABAC36 /* PopupConfirmViewController.swift in Sources */,
+				E58D6F772682925900926134 /* DesignableView.swift in Sources */,
 				E5F0A015268270D300F59E59 /* Product.swift in Sources */,
 				E58D2080267EB0E30065B480 /* CustomProductsListTableViewCell.swift in Sources */,
 				E50BF8CE267E94D900B6D83E /* SceneDelegate.swift in Sources */,

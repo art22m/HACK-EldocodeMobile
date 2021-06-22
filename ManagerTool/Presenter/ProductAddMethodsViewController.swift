@@ -61,31 +61,31 @@ class ProductAddMethodsViewController: UIViewController, QRCodeReaderViewControl
 extension ProductAddMethodsViewController {
     private func checkScanPermissions() -> Bool {
         do {
-          return try QRCodeReader.supportsMetadataObjectTypes()
+            return try QRCodeReader.supportsMetadataObjectTypes()
         } catch let error as NSError {
-          let alert: UIAlertController
+            let alert: UIAlertController
 
-          switch error.code {
-          case -11852:
-            alert = UIAlertController(title: "Ошибка", message: "Это приложение не авторизовано для использования камеры заднего вида.", preferredStyle: .alert)
+            switch error.code {
+                case -11852:
+                    alert = UIAlertController(title: "Ошибка", message: "Это приложение не авторизовано для использования камеры заднего вида.", preferredStyle: .alert)
 
-            alert.addAction(UIAlertAction(title: "Настройки", style: .default, handler: { (_) in
-              DispatchQueue.main.async {
-                if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
-                    UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
-                }
-              }
-            }))
+                    alert.addAction(UIAlertAction(title: "Настройки", style: .default, handler: { (_) in
+                        DispatchQueue.main.async {
+                            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                                UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                            }
+                        }
+                    }))
 
-            alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
-          default:
-            alert = UIAlertController(title: "Ошибка", message: "Сканнер не поддерживается данным устройством", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Хорошо", style: .cancel, handler: nil))
-          }
+                    alert.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+            default:
+                alert = UIAlertController(title: "Ошибка", message: "Сканнер не поддерживается данным устройством", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Хорошо", style: .cancel, handler: nil))
+            }
 
-          present(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
 
-          return false
+            return false
         }
     }
 }
@@ -95,9 +95,7 @@ extension ProductAddMethodsViewController {
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         reader.stopScanning()
         dismiss(animated: true, completion: nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.addProduct(url: result.value)
-        }
+        self.addProduct(url: result.value)
     }
 
     func readerDidCancel(_ reader: QRCodeReaderViewController) {
@@ -110,30 +108,32 @@ extension ProductAddMethodsViewController {
 extension ProductAddMethodsViewController {
     func addProduct(url: String) {
         let fetchedData = webParser.getProductData(from: url)
-        if (fetchedData.name == nil) {
-            let alertFailure = UIAlertController(title: "Товар не найден",
-                                                message: "Попробуйте отсканировать QR код еще раз или проверьте QR код на целостность",
-                                                preferredStyle: .alert)
-            self.present(alertFailure, animated: true, completion: nil)
-            return
-        }
-        
-        let alertSuccess = UIAlertController(title: "Найден товар",
-                                             message: "Название: \(fetchedData.name ?? "Не найдено")) \nАртикул: \(fetchedData.vendorCode ?? "Не найден") ",
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Добавить", style: UIAlertAction.Style.default) {
-                UIAlertAction in
-            if let rootVC = self.navigationController?.viewControllers.first as? ProductListViewController {
-                rootVC.addProduct(product: Product.init(vendorCode: fetchedData.vendorCode, name: fetchedData.name, price: fetchedData.price, pictureURL: fetchedData.pictureURL, productURL: url))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if (fetchedData.name == nil) {
+                let alertFailure = UIAlertController(title: "Товар не найден",
+                                                    message: "Попробуйте отсканировать QR код еще раз или проверьте QR код на целостность",
+                                                    preferredStyle: .alert)
+                self.present(alertFailure, animated: true, completion: nil)
+                return
             }
-            _ = self.navigationController?.popToRootViewController(animated: true)
+            
+            let alertSuccess = UIAlertController(title: "Найден товар",
+                                                 message: "Название: \(fetchedData.name ?? "Не найдено")) \nАртикул: \(fetchedData.vendorCode ?? "Не найден") ",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Добавить", style: UIAlertAction.Style.default) {
+                    UIAlertAction in
+                if let rootVC = self.navigationController?.viewControllers.first as? ProductListViewController {
+                    rootVC.addProduct(product: Product.init(vendorCode: fetchedData.vendorCode, name: fetchedData.name, price: fetchedData.price, pictureURL: fetchedData.pictureURL, productURL: url))
+                }
+                _ = self.navigationController?.popToRootViewController(animated: true)
+            }
+            
+            let cancelAction = UIAlertAction(title: "Отмена", style: UIAlertAction.Style.cancel)
+            
+            alertSuccess.addAction(okAction)
+            alertSuccess.addAction(cancelAction)
+            
+            self.present(alertSuccess, animated: true, completion: nil)
         }
-        
-        let cancelAction = UIAlertAction(title: "Отмена", style: UIAlertAction.Style.cancel)
-        
-        alertSuccess.addAction(okAction)
-        alertSuccess.addAction(cancelAction)
-        
-        self.present(alertSuccess, animated: true, completion: nil)
     }
 }
