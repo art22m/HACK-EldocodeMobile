@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class ProductListViewController: UIViewController {
     // MARK: - IBOutlet
@@ -63,9 +64,11 @@ class ProductListViewController: UIViewController {
     }
     
     @IBAction func sendTap(_ sender: Any) {
-        if let id = managerID {
-            saveActions.saveProducts(products: productsList, manager: id, customerPhone: nil)
-        } else { // If manager not log in
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            if let id = managerID {
+                saveActions.saveProducts(products: productsList, manager: id, customerPhone: nil)
+            }
+        } else {
             self.present(alertNoLogin, animated: true, completion: nil)
         }
     }

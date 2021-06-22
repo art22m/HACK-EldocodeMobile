@@ -253,16 +253,22 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="PGr-Eh-XQc">
-                                        <rect key="frame" x="0.0" y="144" width="414" height="269.5"/>
+                                        <rect key="frame" x="0.0" y="144" width="414" height="317"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xL-gz-Off">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="С возвращением!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xL-gz-Off">
                                                 <rect key="frame" x="16" y="8" width="382" height="33.5"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ошибка" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsx-KG-xtC">
+                                                <rect key="frame" x="16" y="68.5" width="382" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemRedColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="kUS-Lk-IXw">
-                                                <rect key="frame" x="16" y="68.5" width="382" height="116"/>
+                                                <rect key="frame" x="16" y="116" width="382" height="116"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXd-fA-3Ec" customClass="DesignableView" customModule="ManagerTool" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
@@ -334,7 +340,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNw-OS-CcX">
-                                                <rect key="frame" x="16" y="211.5" width="382" height="50"/>
+                                                <rect key="frame" x="16" y="259" width="382" height="50"/>
                                                 <color key="backgroundColor" red="1" green="0.60784313729999995" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="hlD-Ol-qxT"/>
@@ -352,10 +358,14 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="kUS-Lk-IXw" firstAttribute="top" secondItem="bsx-KG-xtC" secondAttribute="bottom" constant="27" id="D7l-8w-oGH"/>
+                                            <constraint firstItem="bsx-KG-xtC" firstAttribute="top" secondItem="1xL-gz-Off" secondAttribute="bottom" constant="27" id="hc6-d9-582"/>
+                                        </constraints>
                                         <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
                                     </stackView>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="200" translatesAutoresizingMaskIntoConstraints="NO" id="lBj-Js-HQZ">
-                                        <rect key="frame" x="0.0" y="421.5" width="414" height="316"/>
+                                        <rect key="frame" x="0.0" y="469" width="414" height="268.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7cB-g3-DGF">
@@ -395,6 +405,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="SKm-j6-CWc"/>
                     <connections>
+                        <outlet property="errorLabel" destination="bsx-KG-xtC" id="zBM-PS-A2z"/>
                         <outlet property="loginTextField" destination="xba-7N-oBG" id="BPv-PC-ZHa"/>
                         <outlet property="passwordTextField" destination="OqX-DS-hKa" id="72m-6Z-AFH"/>
                         <outlet property="signinButton" destination="fNw-OS-CcX" id="Ugv-5M-e4j"/>
@@ -416,6 +427,9 @@
         <image name="Search" width="120" height="154"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
