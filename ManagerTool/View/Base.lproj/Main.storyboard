@@ -16,8 +16,8 @@
                     <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" translucent="NO" id="wpc-JZ-4af">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.89019607840000003" green="0.062745098040000002" blue="0.21176470589999999" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.89019607840000003" green="0.062745098040000002" blue="0.21176470589999999" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.23137254900000001" green="0.41176470590000003" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.51764705882352935" green="0.66274509803921566" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -38,9 +38,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmptyBasket" translatesAutoresizingMaskIntoConstraints="NO" id="bA0-2H-Rm0">
+                                <rect key="frame" x="49.5" y="295.5" width="315" height="217"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="217" id="hmX-WC-pOh"/>
+                                    <constraint firstAttribute="width" constant="315" id="mXv-O9-Fn4"/>
+                                </constraints>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aTv-2h-lPi">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="708"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.89411764705882346" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lw3-tF-CC7" userLabel="Bottom Bar">
                                 <rect key="frame" x="0.0" y="708" width="414" height="100"/>
@@ -60,6 +67,7 @@
                                         <state key="normal" image="AccountLogo"/>
                                         <connections>
                                             <action selector="accountTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="I2b-xP-9rL"/>
+                                            <segue destination="dPV-ze-vvQ" kind="show" id="FOe-Vt-Dde"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXy-GD-Ytm" userLabel="History">
@@ -71,7 +79,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.89019607840000003" green="0.062745098040000002" blue="0.21176470589999999" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.51764705879999995" green="0.66274509800000003" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ogQ-ho-hbP" secondAttribute="trailing" constant="30" id="2pc-fj-aJG"/>
                                     <constraint firstAttribute="bottom" secondItem="znN-TK-31g" secondAttribute="bottom" constant="30" id="4Pn-n5-cPW"/>
@@ -90,6 +98,8 @@
                             <constraint firstItem="lw3-tF-CC7" firstAttribute="leading" secondItem="gun-xG-sBI" secondAttribute="leading" id="EUt-a5-uH4"/>
                             <constraint firstItem="aTv-2h-lPi" firstAttribute="leading" secondItem="gun-xG-sBI" secondAttribute="leading" id="HxB-Y0-nUv"/>
                             <constraint firstItem="gun-xG-sBI" firstAttribute="trailing" secondItem="lw3-tF-CC7" secondAttribute="trailing" id="Hxz-IL-s4i"/>
+                            <constraint firstItem="bA0-2H-Rm0" firstAttribute="centerX" secondItem="SGf-R3-yYZ" secondAttribute="centerX" id="IsK-Fl-bJu"/>
+                            <constraint firstItem="bA0-2H-Rm0" firstAttribute="centerY" secondItem="SGf-R3-yYZ" secondAttribute="centerY" id="RbC-GP-rsH"/>
                             <constraint firstItem="aTv-2h-lPi" firstAttribute="top" secondItem="gun-xG-sBI" secondAttribute="top" id="buX-SO-zs9"/>
                             <constraint firstAttribute="bottom" secondItem="lw3-tF-CC7" secondAttribute="bottom" id="cqo-8c-20j"/>
                             <constraint firstItem="lw3-tF-CC7" firstAttribute="top" secondItem="aTv-2h-lPi" secondAttribute="bottom" id="x3C-PF-K58"/>
@@ -106,6 +116,7 @@
                     <connections>
                         <outlet property="accountButton" destination="ogQ-ho-hbP" id="Roy-zh-uri"/>
                         <outlet property="addButton" destination="znN-TK-31g" id="cth-N2-IJH"/>
+                        <outlet property="emptyBasketImage" destination="bA0-2H-Rm0" id="7Zo-hI-0jP"/>
                         <outlet property="historyButton" destination="cXy-GD-Ytm" id="r1j-qk-z9u"/>
                         <outlet property="productListTableView" destination="aTv-2h-lPi" id="Kyh-RV-3ZA"/>
                     </connections>
@@ -113,6 +124,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xp-9W-nQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="384" y="-449"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="oI9-3L-oeE">
+            <objects>
+                <viewController restorationIdentifier="ManagerAccount" storyboardIdentifier="ManagerAccount" id="dPV-ze-vvQ" userLabel="Account" customClass="ManagerAccountViewController" customModule="ManagerTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oU4-ag-d4I">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="iby-Mn-InM"/>
+                        <color key="backgroundColor" red="0.23137254900000001" green="0.41176470590000003" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uj8-LQ-qEG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBc-YE-q49" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1096" y="243"/>
         </scene>
         <!--ProductAddMethod-->
         <scene sceneID="My8-Mk-a3C">
@@ -166,7 +193,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yFf-wD-dZq"/>
-                        <color key="backgroundColor" red="0.41176470590000003" green="0.70196078429999997" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.23137254901960785" green="0.41176470588235292" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="B1W-p1-xcM" firstAttribute="centerX" secondItem="qdM-ov-AA9" secondAttribute="centerX" id="5xp-JD-QJ1"/>
                             <constraint firstItem="B1W-p1-xcM" firstAttribute="centerY" secondItem="qdM-ov-AA9" secondAttribute="centerY" id="ptm-So-bxh"/>
@@ -204,7 +231,7 @@
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="28a-9u-DNs"/>
-                        <color key="backgroundColor" red="0.41176470590000003" green="0.70196078429999997" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.51764705879999995" green="0.66274509800000003" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="28a-9u-DNs" firstAttribute="bottom" secondItem="H7V-p2-rn4" secondAttribute="bottom" id="9xP-lh-FS6"/>
                             <constraint firstItem="H7V-p2-rn4" firstAttribute="top" secondItem="k22-EH-M6i" secondAttribute="bottom" id="MHN-SY-uJE"/>
@@ -225,6 +252,7 @@
         <image name="AccountLogo" width="48" height="54"/>
         <image name="AddLogo" width="56" height="63.5"/>
         <image name="Barcode" width="120" height="141.5"/>
+        <image name="EmptyBasket" width="315" height="219.5"/>
         <image name="HistoryLogo" width="48" height="53.5"/>
         <image name="QRcode" width="120" height="152"/>
         <image name="Search" width="120" height="154"/>

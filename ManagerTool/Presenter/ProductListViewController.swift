@@ -10,6 +10,7 @@ import Firebase
 
 class ProductListViewController: UIViewController {
     // MARK: - IBOutlet
+    @IBOutlet weak var emptyBasketImage: UIImageView!
     @IBOutlet weak var productListTableView: UITableView!
     @IBOutlet weak var historyButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
@@ -17,18 +18,34 @@ class ProductListViewController: UIViewController {
     
     var productsList: [Product] = [Product.init(vendorCode: "71240236", name: "Контейнер Tefal Masterseal Fresh 0,2 л (K3010112)", price: "690", pictureURL: nil, productURL: "https://www.eldorado.ru/cat/detail/kontejner-tefal-clip-close-0-2-l-k3010112/")]
     
-    private var workerID: String = ""
+    private var managerID: String? = nil
     private lazy var db = Firestore.firestore()
     private let saveActions = SaveActions()
+    let alertNoLogin = UIAlertController(title: "Вы не авторизованы.",
+                                         message: "Пожалуйста, войдите под своим уникальным номером.",
+                                         preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emptyBasketImage.isHidden = true
                         
         // Initialize the table
         productListTableView.register(CustomProductsListTableViewCell.nib(), forCellReuseIdentifier: CustomProductsListTableViewCell.identifier)
         productListTableView.dataSource = self
         productListTableView.allowsSelection = false
         productListTableView.rowHeight = 100
+        
+        // Alerts
+        let okAction = UIAlertAction(title: "Хорошо", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+            if let ManagerAccountViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ManagerAccount") as? ManagerAccountViewController {
+                if let navigator = self.navigationController {
+                      navigator.pushViewController(ManagerAccountViewController, animated: true)
+                }
+            }
+        }
+        alertNoLogin.addAction(okAction)
 }
     
     
@@ -46,15 +63,25 @@ class ProductListViewController: UIViewController {
     }
     
     @IBAction func sendTap(_ sender: Any) {
-        saveActions.saveProducts(products: productsList, manager: workerID, customerPhone: nil)
-                
-        print("Success")
+        if let id = managerID {
+            saveActions.saveProducts(products: productsList, manager: id, customerPhone: nil)
+        } else { // If manager not log in
+            self.present(alertNoLogin, animated: true, completion: nil)
+        }
     }
 }
 
 // MARK: - TableViewDataSource
 extension ProductListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (productsList.isEmpty) {
+            emptyBasketImage.isHidden = false
+            productListTableView.isHidden = true
+        } else {
+            emptyBasketImage.isHidden = true
+            productListTableView.isHidden = false
+        }
+        
         return productsList.count
     }
     
