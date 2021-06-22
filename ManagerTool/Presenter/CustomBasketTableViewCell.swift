@@ -24,6 +24,10 @@ class CustomBasketTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let separator = UIView(frame: CGRect(x: 20 + productLogoImageView.bounds.width, y: bounds.size.height - 0.5, width: bounds.size.width, height: 1.5))
+        separator.backgroundColor = UIColor.darkGray
+        contentView.addSubview(separator)
+        
     }
     
     func configure(with pattern: BasketCellPattern) {
