@@ -55,5 +55,4 @@ class CustomBasketTableViewCell: UITableViewCell {
             self.productVendorCodeLabel.text = "Неизвестно"
         }
     }
-    
 }

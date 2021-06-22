@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DbP-PW-Sgc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -32,7 +33,7 @@
         <!--ProductList-->
         <scene sceneID="qtQ-dv-EZR">
             <objects>
-                <viewController restorationIdentifier="Basket" storyboardIdentifier="Basket" title="BasketViewController" id="WE8-50-Raf" userLabel="ProductList" customClass="BasketViewController" customModule="ManagerTool" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Basket" storyboardIdentifier="Basket" title="BasketViewController" id="WE8-50-Raf" userLabel="ProductList" customClass="ProductListViewController" customModule="ManagerTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SGf-R3-yYZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,6 +50,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="AddLogo"/>
                                         <connections>
+                                            <action selector="addTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="s4u-Ir-RXS"/>
                                             <segue destination="Wjy-t1-aoA" kind="show" id="db3-KW-BvI"/>
                                         </connections>
                                     </button>
@@ -56,11 +58,17 @@
                                         <rect key="frame" x="336" y="16" width="48" height="54"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="AccountLogo"/>
+                                        <connections>
+                                            <action selector="accountTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="I2b-xP-9rL"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXy-GD-Ytm" userLabel="History">
                                         <rect key="frame" x="30" y="16" width="48" height="54"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="HistoryLogo"/>
+                                        <connections>
+                                            <action selector="historyTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="d9t-ut-bIP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.89019607840000003" green="0.062745098040000002" blue="0.21176470589999999" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -89,14 +97,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Список товаров" id="Jc7-Gx-oun">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="IWf-aY-xSh"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="QRCodeLogo" id="WiF-lH-GA6">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="QRCodeButton:" destination="WE8-50-Raf" id="pZD-aB-dEo"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="accountButton" destination="ogQ-ho-hbP" id="Roy-zh-uri"/>
+                        <outlet property="addButton" destination="znN-TK-31g" id="cth-N2-IJH"/>
+                        <outlet property="historyButton" destination="cXy-GD-Ytm" id="r1j-qk-z9u"/>
                         <outlet property="productListTableView" destination="aTv-2h-lPi" id="Kyh-RV-3ZA"/>
                     </connections>
                 </viewController>
@@ -107,7 +112,7 @@
         <!--ProductAddMethod-->
         <scene sceneID="My8-Mk-a3C">
             <objects>
-                <viewController id="Wjy-t1-aoA" userLabel="ProductAddMethod" sceneMemberID="viewController">
+                <viewController id="Wjy-t1-aoA" userLabel="ProductAddMethod" customClass="NewProductViewController" customModule="ManagerTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qdM-ov-AA9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,6 +128,9 @@
                                             <constraint firstAttribute="height" constant="152" id="vqn-MZ-mSh"/>
                                         </constraints>
                                         <state key="normal" image="QRcode"/>
+                                        <connections>
+                                            <action selector="QRTap:" destination="Wjy-t1-aoA" eventType="touchUpInside" id="hJM-3V-GjQ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6T-H0-1M5">
                                         <rect key="frame" x="0.0" y="211" width="120" height="154"/>
@@ -133,6 +141,7 @@
                                         </constraints>
                                         <state key="normal" image="Search"/>
                                         <connections>
+                                            <action selector="SearchTap:" destination="Wjy-t1-aoA" eventType="touchUpInside" id="lVp-ox-8Pp"/>
                                             <segue destination="rcb-BZ-LPn" kind="presentation" id="kWk-BA-5KL"/>
                                         </connections>
                                     </button>
@@ -144,6 +153,9 @@
                                             <constraint firstAttribute="height" constant="142" id="XXr-is-CO3"/>
                                         </constraints>
                                         <state key="normal" image="Barcode"/>
+                                        <connections>
+                                            <action selector="BarcodeTap:" destination="Wjy-t1-aoA" eventType="touchUpInside" id="iT8-cV-MzL"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -156,6 +168,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OLu-Aw-ML9"/>
+                    <connections>
+                        <outlet property="BarcodeButton" destination="WZb-5T-bac" id="em2-iQ-bfC"/>
+                        <outlet property="QRCodeButton" destination="I1r-GS-AuS" id="jAd-Bw-lo0"/>
+                        <outlet property="SearchButton" destination="i6T-H0-1M5" id="6MU-9g-SM7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sNX-tj-yaK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -204,7 +221,6 @@
         <image name="AddLogo" width="56" height="63.5"/>
         <image name="Barcode" width="120" height="141.5"/>
         <image name="HistoryLogo" width="48" height="53.5"/>
-        <image name="QRCodeLogo" width="36" height="36"/>
         <image name="QRcode" width="120" height="152"/>
         <image name="Search" width="120" height="154"/>
         <systemColor name="systemBackgroundColor">

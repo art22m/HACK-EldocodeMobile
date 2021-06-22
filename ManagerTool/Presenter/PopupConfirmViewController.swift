@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class AddToBasketViewController: UIViewController {
+class PopupConfirmViewController: UIViewController {
     // MARK: - IBOutlet
     
     @IBOutlet weak var logoImageView: UIImageView!

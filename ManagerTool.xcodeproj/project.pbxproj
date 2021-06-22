@@ -14,13 +14,14 @@
 		E50BF8D5267E94E100B6D83E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E50BF8D4267E94E100B6D83E /* Assets.xcassets */; };
 		E50BF8D8267E94E100B6D83E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50BF8D6267E94E100B6D83E /* LaunchScreen.storyboard */; };
 		E51F9E87267FD1B300ABAC36 /* AddToBasketScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E51F9E86267FD1B300ABAC36 /* AddToBasketScreen.storyboard */; };
-		E51F9E8A267FD38D00ABAC36 /* AddToBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F9E89267FD38D00ABAC36 /* AddToBasketViewController.swift */; };
+		E51F9E8A267FD38D00ABAC36 /* PopupConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F9E89267FD38D00ABAC36 /* PopupConfirmViewController.swift */; };
 		E53ED6F6267F918700C5B51C /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53ED6F5267F918700C5B51C /* HTMLParser.swift */; };
-		E58D207B267EAA960065B480 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D207A267EAA960065B480 /* BasketViewController.swift */; };
+		E58D207B267EAA960065B480 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D207A267EAA960065B480 /* ProductListViewController.swift */; };
 		E58D2080267EB0E30065B480 /* CustomBasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D207E267EB0E30065B480 /* CustomBasketTableViewCell.swift */; };
 		E58D2081267EB0E30065B480 /* CustomBasketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58D207F267EB0E30065B480 /* CustomBasketTableViewCell.xib */; };
 		E58D2084267EB2680065B480 /* BasketCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D2083267EB2680065B480 /* BasketCellModel.swift */; };
 		E5F09FD22681465800F59E59 /* ProductDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F09FD12681465800F59E59 /* ProductDataDelegate.swift */; };
+		E5F09FE8268216DF00F59E59 /* NewProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F09FE7268216DE00F59E59 /* NewProductViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,13 +35,14 @@
 		E50BF8D7267E94E100B6D83E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E50BF8D9267E94E100B6D83E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E51F9E86267FD1B300ABAC36 /* AddToBasketScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddToBasketScreen.storyboard; sourceTree = "<group>"; };
-		E51F9E89267FD38D00ABAC36 /* AddToBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToBasketViewController.swift; sourceTree = "<group>"; };
+		E51F9E89267FD38D00ABAC36 /* PopupConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupConfirmViewController.swift; sourceTree = "<group>"; };
 		E53ED6F5267F918700C5B51C /* HTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
-		E58D207A267EAA960065B480 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
+		E58D207A267EAA960065B480 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
 		E58D207E267EB0E30065B480 /* CustomBasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBasketTableViewCell.swift; sourceTree = "<group>"; };
 		E58D207F267EB0E30065B480 /* CustomBasketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomBasketTableViewCell.xib; sourceTree = "<group>"; };
 		E58D2083267EB2680065B480 /* BasketCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketCellModel.swift; sourceTree = "<group>"; };
 		E5F09FD12681465800F59E59 /* ProductDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataDelegate.swift; sourceTree = "<group>"; };
+		E5F09FE7268216DE00F59E59 /* NewProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProductViewController.swift; sourceTree = "<group>"; };
 		EEDFFDE8D34C6F9A11A24625 /* Pods-ManagerTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ManagerTool.debug.xcconfig"; path = "Target Support Files/Pods-ManagerTool/Pods-ManagerTool.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,9 +121,10 @@
 		E53ED6ED267F8DE000C5B51C /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				E58D207A267EAA960065B480 /* BasketViewController.swift */,
 				E58D207E267EB0E30065B480 /* CustomBasketTableViewCell.swift */,
-				E51F9E89267FD38D00ABAC36 /* AddToBasketViewController.swift */,
+				E58D207A267EAA960065B480 /* ProductListViewController.swift */,
+				E51F9E89267FD38D00ABAC36 /* PopupConfirmViewController.swift */,
+				E5F09FE7268216DE00F59E59 /* NewProductViewController.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -252,12 +255,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E58D207B267EAA960065B480 /* BasketViewController.swift in Sources */,
+				E58D207B267EAA960065B480 /* ProductListViewController.swift in Sources */,
 				E58D2084267EB2680065B480 /* BasketCellModel.swift in Sources */,
 				E5F09FD22681465800F59E59 /* ProductDataDelegate.swift in Sources */,
+				E5F09FE8268216DF00F59E59 /* NewProductViewController.swift in Sources */,
 				E50BF8CC267E94D900B6D83E /* AppDelegate.swift in Sources */,
 				E53ED6F6267F918700C5B51C /* HTMLParser.swift in Sources */,
-				E51F9E8A267FD38D00ABAC36 /* AddToBasketViewController.swift in Sources */,
+				E51F9E8A267FD38D00ABAC36 /* PopupConfirmViewController.swift in Sources */,
 				E58D2080267EB0E30065B480 /* CustomBasketTableViewCell.swift in Sources */,
 				E50BF8CE267E94D900B6D83E /* SceneDelegate.swift in Sources */,
 			);
@@ -410,7 +414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RTG39GK7BU;
 				INFOPLIST_FILE = ManagerTool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -431,7 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RTG39GK7BU;
 				INFOPLIST_FILE = ManagerTool/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
