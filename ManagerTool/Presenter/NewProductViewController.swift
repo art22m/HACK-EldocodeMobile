@@ -18,12 +18,14 @@ class NewProductViewController: UIViewController, QRCodeReaderViewControllerDele
             $0.showSwitchCameraButton  = false
             $0.preferredStatusBarStyle = .lightContent
             $0.showOverlayView         = true
-            $0.rectOfInterest          = CGRect(x: 0.2, y: 0.2, width: 0.6, height: 0.4)
+            $0.rectOfInterest          = CGRect(x: 0.2, y: 0.2, width: 0.6, height: 0.6)
             $0.reader.stopScanningWhenCodeIsFound = false
         }
         
         return QRCodeReaderViewController(builder: builder)
       }()
+    
+    let webParser = EldoradoWebSiteParser()
     
     // MARK: - IBOutlet
     @IBOutlet weak var QRCodeButton: UIButton!
@@ -41,12 +43,6 @@ class NewProductViewController: UIViewController, QRCodeReaderViewControllerDele
 
         readerVC.modalPresentationStyle = .formSheet
         readerVC.delegate               = self
-
-        readerVC.completionBlock = { (result: QRCodeReaderResult?) in
-              if let result = result {
-                    print("Completion with result: \(result.value) of type \(result.metadataType)")
-              }
-        }
 
         present(readerVC, animated: true, completion: nil)
     }
@@ -97,22 +93,45 @@ extension NewProductViewController {
 extension NewProductViewController {
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         reader.stopScanning()
-
-        dismiss(animated: true) { [weak self] in
-          let alert = UIAlertController(
-            title: "QRCodeReader",
-            message: String (format:"%@ (of type %@)", result.value, result.metadataType),
-            preferredStyle: .alert
-          )
-          alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-
-          self?.present(alert, animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.addProduct(url: result.value)
         }
-      }
+    }
 
-      func readerDidCancel(_ reader: QRCodeReaderViewController) {
+    func readerDidCancel(_ reader: QRCodeReaderViewController) {
         reader.stopScanning()
 
         dismiss(animated: true, completion: nil)
-      }
+    }
+}
+
+extension NewProductViewController {
+    func addProduct(url: String) {
+        let fetchedData = webParser.getProductData(from: url)
+        if (fetchedData.name == nil) {
+            let alertFailure = UIAlertController(title: "Товар не найден",
+                                                message: "Попробуйте отсканировать QR код еще раз или проверьте QR код на целостность",
+                                                preferredStyle: .alert)
+            self.present(alertFailure, animated: true, completion: nil)
+            return
+        }
+        
+        let alertSuccess = UIAlertController(title: "Найден товар",
+                                             message: "Название: \(fetchedData.name ?? "Не найдено")) \nАртикул: \(fetchedData.vendorCode ?? "Не найден") ",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Добавить", style: UIAlertAction.Style.default) {
+                UIAlertAction in
+            if let rootVC = self.navigationController?.viewControllers.first as? ProductListViewController {
+                rootVC.addProduct(name: fetchedData.name, vendorCode: fetchedData.vendorCode, price: fetchedData.price, pictureURL: fetchedData.pictureURL)
+            }
+            _ = self.navigationController?.popToRootViewController(animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "Отмена", style: UIAlertAction.Style.cancel)
+        
+        alertSuccess.addAction(okAction)
+        alertSuccess.addAction(cancelAction)
+        
+        self.present(alertSuccess, animated: true, completion: nil)
+    }
 }

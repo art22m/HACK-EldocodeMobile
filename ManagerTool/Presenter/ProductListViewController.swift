@@ -28,6 +28,7 @@ class ProductListViewController: UIViewController {
         productListTableView.register(CustomBasketTableViewCell.nib(), forCellReuseIdentifier: CustomBasketTableViewCell.identifier)
         productListTableView.dataSource = self
         productListTableView.allowsSelection = false
+        productListTableView.rowHeight = 100
     }
     
     
@@ -56,12 +57,19 @@ extension ProductListViewController: UITableViewDataSource {
         cell.configure(with: .init(vendorCode: productsData[indexPath.row].vendorCode, name: productsData[indexPath.row].name, price: productsData[indexPath.row].price, pictureURL: productsData[indexPath.row].pictureURL))
         return cell
     }
-    
+        
     // Swipe to delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             productsData.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    func addProduct(name: String?, vendorCode: String?, price: String?, pictureURL: String?) {
+        productsData.append((name: name, vendorCode:vendorCode, price: price, pictureURL: pictureURL))
+        DispatchQueue.main.async {
+            self.productListTableView.reloadData()
         }
     }
 }

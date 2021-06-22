@@ -44,13 +44,13 @@ class CustomBasketTableViewCell: UITableViewCell {
         }
         
         if let price = pattern.price {
-            self.productPriceLabel.text = price + "₽"
+            self.productPriceLabel.text = "Стоимость: " + price + "₽"
         } else {
             self.productPriceLabel.text = "Неизвестно"
         }
         
         if let id = pattern.vendorCode {
-            self.productVendorCodeLabel.text = "Арт. " + id
+            self.productVendorCodeLabel.text = "Артикул: " + id
         } else {
             self.productVendorCodeLabel.text = "Неизвестно"
         }
