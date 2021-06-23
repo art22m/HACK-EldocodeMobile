@@ -9,14 +9,14 @@ import Foundation
 import Firebase
 
 protocol ISaveActions: class {
-    func saveProducts(products: [Product], managerID: String, customerPhone: String)
+    func saveProducts(products: [Product], managerID: String, customerPhone: String) -> String
 }
 
 class SaveActions: ISaveActions {
     private lazy var db = Firestore.firestore()
     
-    func saveProducts(products: [Product], managerID: String, customerPhone: String) {
-        guard products.isEmpty == false else { return }
+    func saveProducts(products: [Product], managerID: String, customerPhone: String) -> String {
+        guard products.isEmpty == false else { return "cartIsEmpty" }
         
         let productsLinkAndName = products.map { ["name" : $0.name ?? "empty", "link" : $0.productURL] }
         
@@ -24,7 +24,8 @@ class SaveActions: ISaveActions {
         let docRef = db.collection("carts").addDocument(data: ["client_ref": db.document("/clients/\(customerPhone)"), "datetime" : Date.init(), "products" : productsLinkAndName, "staff_ref": db.document("/staff/\(managerID)")])
         print(docRef.documentID)
         
-        
         db.collection("staff").document(managerID).updateData(["ref" : FieldValue.arrayUnion([docRef])])
+        
+        return docRef.documentID
     }
 }

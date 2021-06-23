@@ -23,6 +23,7 @@
 		E58D6F5C26827E6800926134 /* NotLoggedManagerAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D6F5B26827E6800926134 /* NotLoggedManagerAccountViewController.swift */; };
 		E58D6F772682925900926134 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D6F762682925900926134 /* DesignableView.swift */; };
 		E58D6F7A2682B21700926134 /* LoggedManagerAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D6F792682B21700926134 /* LoggedManagerAccountViewController.swift */; };
+		E58D6F7F2682D2E900926134 /* QRGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D6F7E2682D2E900926134 /* QRGeneratorViewController.swift */; };
 		E5F0A00B268235C600F59E59 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5F0A00A268235C600F59E59 /* GoogleService-Info.plist */; };
 		E5F0A010268243A300F59E59 /* SaveActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F0A00F268243A300F59E59 /* SaveActions.swift */; };
 		E5F0A015268270D300F59E59 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F0A014268270D300F59E59 /* Product.swift */; };
@@ -48,6 +49,7 @@
 		E58D6F5B26827E6800926134 /* NotLoggedManagerAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotLoggedManagerAccountViewController.swift; sourceTree = "<group>"; };
 		E58D6F762682925900926134 /* DesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		E58D6F792682B21700926134 /* LoggedManagerAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedManagerAccountViewController.swift; sourceTree = "<group>"; };
+		E58D6F7E2682D2E900926134 /* QRGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGeneratorViewController.swift; sourceTree = "<group>"; };
 		E5F0A00A268235C600F59E59 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E5F0A00F268243A300F59E59 /* SaveActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActions.swift; sourceTree = "<group>"; };
 		E5F0A014268270D300F59E59 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				E58D6F5B26827E6800926134 /* NotLoggedManagerAccountViewController.swift */,
 				E58D6F792682B21700926134 /* LoggedManagerAccountViewController.swift */,
 				E51F9E89267FD38D00ABAC36 /* PopupConfirmViewController.swift */,
+				E58D6F7E2682D2E900926134 /* QRGeneratorViewController.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E58D207B267EAA960065B480 /* ProductListViewController.swift in Sources */,
+				E58D6F7F2682D2E900926134 /* QRGeneratorViewController.swift in Sources */,
 				E58D2084267EB2680065B480 /* ProductsListCellModel.swift in Sources */,
 				E58D6F5C26827E6800926134 /* NotLoggedManagerAccountViewController.swift in Sources */,
 				E50BF8CC267E94D900B6D83E /* AppDelegate.swift in Sources */,

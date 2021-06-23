@@ -16,7 +16,7 @@
                     <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" translucent="NO" id="wpc-JZ-4af">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.23137254900000001" green="0.41176470590000003" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.80784313725490198" green="0.070588235294117646" blue="0.070588235294117646" alpha="0.89803921568627454" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.51764705882352935" green="0.66274509803921566" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -29,6 +29,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMz-gT-wib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-590" y="-449"/>
+        </scene>
+        <!--QRGenerator-->
+        <scene sceneID="kE5-M5-Gsu">
+            <objects>
+                <viewController restorationIdentifier="QRGenerator" storyboardIdentifier="QRGenerator" id="aWe-9Q-Zme" userLabel="QRGenerator" customClass="QRGeneratorViewController" customModule="ManagerTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sSp-Lk-uVA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i0b-55-g93">
+                                <rect key="frame" x="87" y="284" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="0EP-f5-ptm"/>
+                                    <constraint firstAttribute="height" constant="240" id="1di-R1-G2h"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7Zq-JG-u5w"/>
+                        <color key="backgroundColor" red="0.12549019610000001" green="0.25098039220000001" blue="0.31764705879999999" alpha="0.8980392157" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="i0b-55-g93" firstAttribute="centerY" secondItem="sSp-Lk-uVA" secondAttribute="centerY" id="qJ5-Mf-aFo"/>
+                            <constraint firstItem="i0b-55-g93" firstAttribute="centerX" secondItem="sSp-Lk-uVA" secondAttribute="centerX" id="s49-2g-5eg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Отсканируйте QR" id="aC2-qp-a78"/>
+                    <connections>
+                        <outlet property="qrImage" destination="i0b-55-g93" id="hx9-uC-Mjr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nma-RT-0T3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1406" y="-1120"/>
         </scene>
         <!--ProductList-->
         <scene sceneID="qtQ-dv-EZR">
@@ -120,6 +152,7 @@
                         <outlet property="productListTableView" destination="aTv-2h-lPi" id="Kyh-RV-3ZA"/>
                         <segue destination="L79-F4-Qw4" kind="show" identifier="toLogged" id="1DY-F6-MLS"/>
                         <segue destination="oIO-Hf-Ggm" kind="show" identifier="toNotLogged" id="4ch-Do-Qj6"/>
+                        <segue destination="aWe-9Q-Zme" kind="show" identifier="QRGenerator" id="cdH-pa-hKC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xp-9W-nQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

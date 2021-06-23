@@ -113,6 +113,7 @@ extension ProductAddMethodsViewController {
                 let alertFailure = UIAlertController(title: "Товар не найден",
                                                     message: "Попробуйте отсканировать QR код еще раз или проверьте QR код на целостность",
                                                     preferredStyle: .alert)
+                alertFailure.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
                 self.present(alertFailure, animated: true, completion: nil)
                 return
             }

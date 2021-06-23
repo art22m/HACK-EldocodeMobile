@@ -59,7 +59,6 @@ class ProductListViewController: UIViewController {
             self.present(alertInputPhone, animated: true, completion: nil)
         }))
         alertQuestion.addAction(UIAlertAction(title: "Нет", style: .default, handler: { [self] action in
-            print("Need QR generator")
             sendToDataBase()
         }))
         
@@ -105,11 +104,18 @@ class ProductListViewController: UIViewController {
     private func sendToDataBase(customerPhone: String = "empty") {
         let managerID: String = FirebaseAuth.Auth.auth().currentUser?.uid ?? "no-data"
         print(customerPhone)
-        saveActions.saveProducts(products: productsList, managerID: managerID, customerPhone: customerPhone)
+        let docID = saveActions.saveProducts(products: productsList, managerID: managerID, customerPhone: customerPhone)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)  {
             self.productsList.removeAll()
             self.productListTableView.reloadData()
+        }
+        
+        if let QRGeneratorViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "QRGenerator") as? QRGeneratorViewController {
+            QRGeneratorViewController.docID = docID
+            if let navigator = self.navigationController {
+                  navigator.pushViewController(QRGeneratorViewController, animated: true)
+            }
         }
     }
 }
