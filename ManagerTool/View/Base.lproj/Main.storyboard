@@ -16,8 +16,8 @@
                     <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" translucent="NO" id="wpc-JZ-4af">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.80784313725490198" green="0.070588235294117646" blue="0.070588235294117646" alpha="0.89803921568627454" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.80784313730000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.8980392157" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.41176470590000003" green="0.70196078429999997" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.41176470590000003" green="0.70196078429999997" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -60,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nma-RT-0T3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1406" y="-1120"/>
+            <point key="canvasLocation" x="1406" y="-1200"/>
         </scene>
         <!--ProductList-->
         <scene sceneID="qtQ-dv-EZR">
@@ -107,7 +107,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.80784313730000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.8980392157" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.41176470590000003" green="0.70196078429999997" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="i0M-6J-hXP" secondAttribute="trailing" constant="25" id="3tg-KW-XVp"/>
                                     <constraint firstAttribute="bottom" secondItem="PnE-oK-Ffk" secondAttribute="bottom" constant="15" id="7lZ-np-npR"/>
@@ -184,7 +184,6 @@
                                         <state key="normal" image="Search"/>
                                         <connections>
                                             <action selector="SearchTap:" destination="Wjy-t1-aoA" eventType="touchUpInside" id="lVp-ox-8Pp"/>
-                                            <segue destination="rcb-BZ-LPn" kind="presentation" id="kWk-BA-5KL"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZb-5T-bac">
@@ -225,15 +224,15 @@
             <objects>
                 <viewController id="rcb-BZ-LPn" userLabel="ManualSearch" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6do-Yk-gBc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H7V-p2-rn4">
-                                <rect key="frame" x="0.0" y="60" width="414" height="748"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="k22-EH-M6i">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="L2I-Aj-jbG"/>
                                 </constraints>
@@ -241,7 +240,7 @@
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="28a-9u-DNs"/>
-                        <color key="backgroundColor" red="0.51764705879999995" green="0.66274509800000003" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.41176470590000003" green="0.70196078429999997" blue="0.074509803920000006" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="28a-9u-DNs" firstAttribute="bottom" secondItem="H7V-p2-rn4" secondAttribute="bottom" id="9xP-lh-FS6"/>
                             <constraint firstItem="H7V-p2-rn4" firstAttribute="top" secondItem="k22-EH-M6i" secondAttribute="bottom" id="MHN-SY-uJE"/>
@@ -255,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddI-H5-Wos" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2288" y="-942"/>
+            <point key="canvasLocation" x="2380" y="-449"/>
         </scene>
         <!--LoggedInManager-->
         <scene sceneID="Yfh-JC-kl7">
@@ -518,7 +517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYB-Ib-mMD" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1312" y="367"/>
+            <point key="canvasLocation" x="1406" y="367"/>
         </scene>
     </scenes>
     <resources>
