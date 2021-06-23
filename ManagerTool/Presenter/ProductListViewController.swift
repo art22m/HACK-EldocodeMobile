@@ -67,7 +67,9 @@ class ProductListViewController: UIViewController {
         alertInputPhone.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
         alertInputPhone.addAction(UIAlertAction(title: "Отправить", style: .default, handler: { [self] action in
             let textField = alertInputPhone.textFields![0] as UITextField
-            sendToDataBase(customerPhone: textField.text ?? "")
+            var text: String = "empty"
+            if (textField.text != "") { text = textField.text ?? "empty" }
+            sendToDataBase(customerPhone: text)
         }))
         alertInputPhone.addTextField()
         alertInputPhone.textFields![0].placeholder = "+79991231212"
@@ -100,8 +102,8 @@ class ProductListViewController: UIViewController {
         }
     }
     
-    private func sendToDataBase(customerPhone: String = "") {
-        let managerID: String = FirebaseAuth.Auth.auth().currentUser?.uid ?? ""
+    private func sendToDataBase(customerPhone: String = "empty") {
+        let managerID: String = FirebaseAuth.Auth.auth().currentUser?.uid ?? "no-data"
         print(customerPhone)
         saveActions.saveProducts(products: productsList, managerID: managerID, customerPhone: customerPhone)
         
