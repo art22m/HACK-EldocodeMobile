@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 import QRCodeReader
+import BarcodeScanner
 
 class ProductAddMethodsViewController: UIViewController, QRCodeReaderViewControllerDelegate {
 
@@ -32,9 +33,14 @@ class ProductAddMethodsViewController: UIViewController, QRCodeReaderViewControl
     @IBOutlet weak var SearchButton: UIButton!
     @IBOutlet weak var BarcodeButton: UIButton!
     
+    let alertNotInDB = UIAlertController(title: "Товар не состоит в базе данных",
+                                              message: nil,
+                                              preferredStyle: .alert)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        alertNotInDB.addAction(UIAlertAction(title: "Хорошо", style: .cancel, handler: nil))
     }
     
     // MARK: - IBAction
@@ -54,6 +60,12 @@ class ProductAddMethodsViewController: UIViewController, QRCodeReaderViewControl
     
     @IBAction func BarcodeTap(_ sender: Any) {
         BarcodeButton.animateZoom()
+        guard checkScanPermissions() else { return }
+        
+        let barcodeVC = makeBarcodeScannerViewController()
+        barcodeVC.modalPresentationStyle = .formSheet
+        
+        present(barcodeVC, animated: true, completion: nil)
     }
 }
 
@@ -90,6 +102,38 @@ extension ProductAddMethodsViewController {
     }
 }
 
+// MARK: - BarcodeScanner Settings
+extension ProductAddMethodsViewController: BarcodeScannerCodeDelegate, BarcodeScannerErrorDelegate, BarcodeScannerDismissalDelegate  {
+    private func makeBarcodeScannerViewController() -> BarcodeScannerViewController {
+       let viewController = BarcodeScannerViewController()
+       viewController.codeDelegate = self
+       viewController.errorDelegate = self
+       viewController.dismissalDelegate = self
+       return viewController
+     }
+    
+    // MARK: - BarcodeScannerCodeDelegate
+    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+        print("Barcode Data: \(code)")
+        print("Symbology Type: \(type)")
+        controller.dismiss(animated: true, completion: nil)
+        self.addProduct(url: code)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            controller.resetWithError()
+        }
+    }
+    
+    // MARK: - BarcodeScannerErrorDelegate
+    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+        print(error)
+  }
+
+    // MARK: - BarcodeScannerDismissalDelegate
+    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+
 // MARK: - QRCodeReader Settings
 extension ProductAddMethodsViewController {
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
@@ -107,11 +151,29 @@ extension ProductAddMethodsViewController {
 
 extension ProductAddMethodsViewController {
     func addProduct(url: String) {
+        var url = url
+        if (url.first?.isNumber == true) {
+            let fetchedBarcodeURL = webParser.getURLByBarcode(barcode: url)
+            if let barURL = fetchedBarcodeURL {
+                url = barURL
+            } else {
+                self.present(alertNotInDB, animated: true, completion: nil)
+                return
+            }
+        }
+        
         let fetchedData = webParser.getProductData(from: url)
+        // IF QR Code doesn't contain https protocol
+        if (url.first != "h") {
+            url.insert(contentsOf: "https://", at: url.startIndex)
+        }
+        
+        print(url)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             if (fetchedData.name == nil) {
                 let alertFailure = UIAlertController(title: "Товар не найден",
-                                                    message: "Попробуйте отсканировать QR код еще раз или проверьте QR код на целостность",
+                                                    message: "Попробуйте отсканировать код еще раз или проверьте код на целостность",
                                                     preferredStyle: .alert)
                 alertFailure.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
                 self.present(alertFailure, animated: true, completion: nil)

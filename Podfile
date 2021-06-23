@@ -15,4 +15,5 @@ target 'ManagerTool' do
   pod 'SDWebImage', '~> 5.0'
   pod 'Firebase/Firestore', '7.8'
   pod 'Firebase/Auth'
+  pod 'BarcodeScanner'
 end

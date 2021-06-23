@@ -10,6 +10,7 @@ import Ji
 import SwiftSoup
 
 class EldoradoWebSiteParser {
+    let barcodeDB : [String : String] = ["8806084563057" : "https://www.eldorado.ru/cat/detail/71346007/?utm_a=A670"]
     private func getHTMLDocument(from URLString: String) -> Document? {
         var URLString = URLString
         
@@ -78,4 +79,12 @@ class EldoradoWebSiteParser {
         return (name: productNameString, vendorCode: productVendorCodeString, price: productPriceString, pictureURL: productPictureURLString, productURL: URLString)
     }
     
+    
+    func getURLByBarcode(barcode: String) -> String? {
+        if (barcodeDB[barcode] != nil) {
+            return barcodeDB[barcode]
+        } else {
+            return nil
+        }
+    }
 }
