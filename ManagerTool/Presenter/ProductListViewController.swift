@@ -13,7 +13,7 @@ class ProductListViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var emptyBasketImage: UIImageView!
     @IBOutlet weak var productListTableView: UITableView!
-    @IBOutlet weak var historyButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var accountButton: UIButton!
     
@@ -76,8 +76,13 @@ class ProductListViewController: UIViewController {
     
     
     // MARK: - IBAction
-    @IBAction func historyTap(_ sender: Any) {
-        historyButton.animateBounce()
+    @IBAction func saveTap(_ sender: Any) {
+        saveButton.animateBounce()
+        if FirebaseAuth.Auth.auth().currentUser == nil {
+            self.present(alertNoLogin, animated: true, completion: nil)
+        } else {
+            self.present(alertQuestion, animated: true, completion: nil)
+        }
     }
     
     @IBAction func addTap(_ sender: Any) {
@@ -93,15 +98,8 @@ class ProductListViewController: UIViewController {
         }
     }
     
-    @IBAction func sendTap(_ sender: Any) {
-        if FirebaseAuth.Auth.auth().currentUser == nil {
-            self.present(alertNoLogin, animated: true, completion: nil)
-        } else {
-            self.present(alertQuestion, animated: true, completion: nil)
-        }
-    }
-    
     private func sendToDataBase(customerPhone: String = "empty") {
+        guard productsList.isEmpty == false else { return }
         let managerID: String = FirebaseAuth.Auth.auth().currentUser?.uid ?? "no-data"
         print(customerPhone)
         let docID = saveActions.saveProducts(products: productsList, managerID: managerID, customerPhone: customerPhone)

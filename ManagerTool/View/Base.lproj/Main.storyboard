@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.80784313725490198" green="0.070588235294117646" blue="0.070588235294117646" alpha="0.89803921568627454" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.51764705882352935" green="0.66274509803921566" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.80784313730000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.8980392157" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
@@ -84,41 +84,38 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lw3-tF-CC7" userLabel="Bottom Bar">
                                 <rect key="frame" x="0.0" y="708" width="414" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znN-TK-31g" userLabel="Add">
-                                        <rect key="frame" x="179" y="6" width="56" height="64"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnE-oK-Ffk">
+                                        <rect key="frame" x="160" y="3" width="94" height="82"/>
                                         <state key="normal" image="AddLogo"/>
                                         <connections>
-                                            <action selector="addTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="s4u-Ir-RXS"/>
-                                            <segue destination="Wjy-t1-aoA" kind="show" id="8sI-sO-VdH"/>
+                                            <action selector="addTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="Arw-9Q-7w6"/>
+                                            <segue destination="Wjy-t1-aoA" kind="show" id="ITa-y3-PO5"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogQ-ho-hbP" userLabel="Account">
-                                        <rect key="frame" x="336" y="16" width="48" height="54"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0M-6J-hXP">
+                                        <rect key="frame" x="333" y="25" width="56" height="55"/>
                                         <state key="normal" image="AccountLogo"/>
                                         <connections>
-                                            <action selector="accountTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="I2b-xP-9rL"/>
+                                            <action selector="accountTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="52C-Sr-OBZ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXy-GD-Ytm" userLabel="History">
-                                        <rect key="frame" x="30" y="16" width="48" height="54"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="HistoryLogo"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pER-ze-fel">
+                                        <rect key="frame" x="25" y="25" width="72" height="55"/>
+                                        <state key="normal" image="SaveLogo"/>
                                         <connections>
-                                            <action selector="historyTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="d9t-ut-bIP"/>
+                                            <action selector="saveTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="dGx-Zx-Pr0"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.51764705879999995" green="0.66274509800000003" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.80784313730000001" green="0.070588235289999995" blue="0.070588235289999995" alpha="0.8980392157" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ogQ-ho-hbP" secondAttribute="trailing" constant="30" id="2pc-fj-aJG"/>
-                                    <constraint firstAttribute="bottom" secondItem="znN-TK-31g" secondAttribute="bottom" constant="30" id="4Pn-n5-cPW"/>
-                                    <constraint firstItem="cXy-GD-Ytm" firstAttribute="leading" secondItem="lw3-tF-CC7" secondAttribute="leading" constant="30" id="CCq-Dr-1pZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="i0M-6J-hXP" secondAttribute="trailing" constant="25" id="3tg-KW-XVp"/>
+                                    <constraint firstAttribute="bottom" secondItem="PnE-oK-Ffk" secondAttribute="bottom" constant="15" id="7lZ-np-npR"/>
+                                    <constraint firstAttribute="bottom" secondItem="i0M-6J-hXP" secondAttribute="bottom" constant="20" id="Jbp-MO-PMZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="pER-ze-fel" secondAttribute="bottom" constant="20" id="Wd3-Vd-94D"/>
+                                    <constraint firstItem="pER-ze-fel" firstAttribute="leading" secondItem="lw3-tF-CC7" secondAttribute="leading" constant="25" id="aeC-d7-XqB"/>
                                     <constraint firstAttribute="height" constant="100" id="bIQ-r6-dEi"/>
-                                    <constraint firstAttribute="bottom" secondItem="cXy-GD-Ytm" secondAttribute="bottom" constant="30" id="bsL-An-Ksc"/>
-                                    <constraint firstAttribute="bottom" secondItem="ogQ-ho-hbP" secondAttribute="bottom" constant="30" id="m27-8w-1w7"/>
-                                    <constraint firstItem="znN-TK-31g" firstAttribute="centerX" secondItem="lw3-tF-CC7" secondAttribute="centerX" id="sj9-qs-25H"/>
+                                    <constraint firstItem="PnE-oK-Ffk" firstAttribute="centerX" secondItem="lw3-tF-CC7" secondAttribute="centerX" id="luv-2e-SBj"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -138,18 +135,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Список товаров" id="Jc7-Gx-oun">
                         <barButtonItem key="backBarButtonItem" title="Назад" id="IWf-aY-xSh"/>
-                        <barButtonItem key="rightBarButtonItem" title="Send" id="gRM-iD-Zoy">
-                            <connections>
-                                <action selector="sendTap:" destination="WE8-50-Raf" id="eNH-c9-TeQ"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="accountButton" destination="ogQ-ho-hbP" id="Roy-zh-uri"/>
-                        <outlet property="addButton" destination="znN-TK-31g" id="cth-N2-IJH"/>
+                        <outlet property="accountButton" destination="i0M-6J-hXP" id="jqr-Bl-fG6"/>
+                        <outlet property="addButton" destination="PnE-oK-Ffk" id="cvm-dP-2ft"/>
                         <outlet property="emptyBasketImage" destination="bA0-2H-Rm0" id="7Zo-hI-0jP"/>
-                        <outlet property="historyButton" destination="cXy-GD-Ytm" id="r1j-qk-z9u"/>
                         <outlet property="productListTableView" destination="aTv-2h-lPi" id="Kyh-RV-3ZA"/>
+                        <outlet property="saveButton" destination="pER-ze-fel" id="km2-Vj-377"/>
                         <segue destination="L79-F4-Qw4" kind="show" identifier="toLogged" id="1DY-F6-MLS"/>
                         <segue destination="oIO-Hf-Ggm" kind="show" identifier="toNotLogged" id="4ch-Do-Qj6"/>
                         <segue destination="aWe-9Q-Zme" kind="show" identifier="QRGenerator" id="cdH-pa-hKC"/>
@@ -157,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1xp-9W-nQO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384" y="-449"/>
+            <point key="canvasLocation" x="382.60869565217394" y="-449.33035714285711"/>
         </scene>
         <!--ProductAddMethod-->
         <scene sceneID="My8-Mk-a3C">
@@ -282,7 +274,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2L-nb-gg1">
                                 <rect key="frame" x="107" y="694" width="200" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.60784313729999995" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.12549019610000001" green="0.25098039220000001" blue="0.31764705879999999" alpha="0.8980392157" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="iCg-rk-SeB"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="uBC-cU-YWn"/>
@@ -454,7 +446,7 @@
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPW-iL-uYq">
                                                 <rect key="frame" x="16" y="259" width="382" height="50"/>
-                                                <color key="backgroundColor" red="1" green="0.60784313729999995" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.12549019610000001" green="0.25098039220000001" blue="0.31764705879999999" alpha="0.8980392157" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Ukf-ZQ-wfq"/>
                                                 </constraints>
@@ -530,13 +522,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AccountLogo" width="48" height="54"/>
-        <image name="AddLogo" width="56" height="63.5"/>
+        <image name="AccountLogo" width="56" height="55"/>
+        <image name="AddLogo" width="94" height="82"/>
         <image name="Barcode" width="120" height="141.5"/>
         <image name="EmptyBasket" width="315" height="219.5"/>
-        <image name="HistoryLogo" width="48" height="53.5"/>
         <image name="QRcode" width="120" height="152"/>
         <image name="ReadyToWork" width="292" height="148"/>
+        <image name="SaveLogo" width="72" height="55"/>
         <image name="Search" width="120" height="154"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
