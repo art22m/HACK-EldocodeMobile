@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class ManagerAccountViewController: UIViewController {
+class NotLoggedManagerAccountViewController: UIViewController {
 
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var signinButton: UIButton!
@@ -16,19 +16,7 @@ class ManagerAccountViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        if FirebaseAuth.Auth.auth().currentUser != nil {
-            print("already login")
-        } else {
-            print("not login")
-        }
-        
-        do {
-            try FirebaseAuth.Auth.auth().signOut()
-        } catch {
-            print("Sign-out error occured")
-        }
+        super.viewDidLoad()        
         
         // Close keyboard
         let tapOutsideKeyboard = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -46,12 +34,14 @@ class ManagerAccountViewController: UIViewController {
     @IBAction func signinTap(_ sender: Any) {
         guard let login = loginTextField.text, !login.isEmpty,
               let password = passwordTextField.text, !password.isEmpty else {
+            errorLabel.isHidden = false
+            errorLabel.text = "Введите логин и пароль"
             print("Missing field data")
             return
         }
         
         Auth.auth().signIn(withEmail: login, password: password) { [weak self] authResult, error in
-            guard let strongSelf = self else { return }
+//            guard let strongSelf = self else { return }
             self?.errorLabel.isHidden = true
             
             guard error == nil else {
@@ -86,7 +76,8 @@ class ManagerAccountViewController: UIViewController {
                 return
             }
             
-            print("Success login")
+            // In case of success log in
+            _ = self?.navigationController?.popToRootViewController(animated: true)
         }
         
         

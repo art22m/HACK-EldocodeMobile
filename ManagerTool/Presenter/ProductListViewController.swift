@@ -17,7 +17,7 @@ class ProductListViewController: UIViewController {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var accountButton: UIButton!
     
-    var productsList: [Product] = [Product.init(vendorCode: "71240236", name: "Контейнер Tefal Masterseal Fresh 0,2 л (K3010112)", price: "690", pictureURL: nil, productURL: "https://www.eldorado.ru/cat/detail/kontejner-tefal-clip-close-0-2-l-k3010112/")]
+    var productsList: [Product] = []
     
     private var managerID: String? = nil
     private lazy var db = Firestore.firestore()
@@ -40,7 +40,7 @@ class ProductListViewController: UIViewController {
         // Alerts
         let okAction = UIAlertAction(title: "Хорошо", style: UIAlertAction.Style.default) {
                 UIAlertAction in
-            if let ManagerAccountViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ManagerAccount") as? ManagerAccountViewController {
+            if let ManagerAccountViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "notlogged") as? NotLoggedManagerAccountViewController {
                 if let navigator = self.navigationController {
                       navigator.pushViewController(ManagerAccountViewController, animated: true)
                 }
@@ -61,6 +61,11 @@ class ProductListViewController: UIViewController {
     
     @IBAction func accountTap(_ sender: Any) {
         accountButton.animateBounce()
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "toLogged", sender: self)
+        } else {
+            performSegue(withIdentifier: "toNotLogged", sender: self)
+        }
     }
     
     @IBAction func sendTap(_ sender: Any) {
