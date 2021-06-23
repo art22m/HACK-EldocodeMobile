@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseFirestore
 import FirebaseAuth
 
 class ProductListViewController: UIViewController {
@@ -31,6 +31,9 @@ class ProductListViewController: UIViewController {
     let alertInputPhone = UIAlertController(title: "Номер телефона",
                                               message: "Для сохранения требуется номер телефона клиента",
                                               preferredStyle: .alert)
+    let alertEmptyBasket = UIAlertController(title: "Корзина пуста",
+                                              message: "Пожалуйста, добавьте товары в корзину для сохранения",
+                                              preferredStyle: .alert)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,12 +48,9 @@ class ProductListViewController: UIViewController {
         // Alerts
         let okAction = UIAlertAction(title: "Хорошо", style: UIAlertAction.Style.default) {
                 UIAlertAction in
-            if let ManagerAccountViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "notlogged") as? NotLoggedManagerAccountViewController {
-                if let navigator = self.navigationController {
-                      navigator.pushViewController(ManagerAccountViewController, animated: true)
-                }
+                self.performSegue(withIdentifier: "toNotLogged", sender: self)
             }
-        }
+    
         alertNoLogin.addAction(okAction)
         
         // Alert #2
@@ -72,11 +72,19 @@ class ProductListViewController: UIViewController {
         }))
         alertInputPhone.addTextField()
         alertInputPhone.textFields![0].placeholder = "+79991231212"
+        
+        // Alert #4
+        alertEmptyBasket.addAction(UIAlertAction(title: "Хорошо", style: .cancel, handler: nil))
 }
     
     
     // MARK: - IBAction
     @IBAction func saveTap(_ sender: Any) {
+        if productsList.isEmpty {
+            self.present(alertEmptyBasket, animated: true, completion: nil)
+            return
+        }
+        
         saveButton.animateBounce()
         if FirebaseAuth.Auth.auth().currentUser == nil {
             self.present(alertNoLogin, animated: true, completion: nil)

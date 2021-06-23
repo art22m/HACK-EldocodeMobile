@@ -13,7 +13,6 @@
 		E50BF8D3267E94D900B6D83E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50BF8D1267E94D900B6D83E /* Main.storyboard */; };
 		E50BF8D5267E94E100B6D83E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E50BF8D4267E94E100B6D83E /* Assets.xcassets */; };
 		E50BF8D8267E94E100B6D83E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E50BF8D6267E94E100B6D83E /* LaunchScreen.storyboard */; };
-		E51F9E8A267FD38D00ABAC36 /* PopupConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51F9E89267FD38D00ABAC36 /* PopupConfirmViewController.swift */; };
 		E53ED6F6267F918700C5B51C /* EldoradoWebSiteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53ED6F5267F918700C5B51C /* EldoradoWebSiteParser.swift */; };
 		E58D207B267EAA960065B480 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D207A267EAA960065B480 /* ProductListViewController.swift */; };
 		E58D2080267EB0E30065B480 /* CustomProductsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58D207E267EB0E30065B480 /* CustomProductsListTableViewCell.swift */; };
@@ -39,7 +38,6 @@
 		E50BF8D4267E94E100B6D83E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E50BF8D7267E94E100B6D83E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E50BF8D9267E94E100B6D83E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E51F9E89267FD38D00ABAC36 /* PopupConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupConfirmViewController.swift; sourceTree = "<group>"; };
 		E53ED6F5267F918700C5B51C /* EldoradoWebSiteParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EldoradoWebSiteParser.swift; sourceTree = "<group>"; };
 		E58D207A267EAA960065B480 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
 		E58D207E267EB0E30065B480 /* CustomProductsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProductsListTableViewCell.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				E58D6F532682798600926134 /* ProductAddMethodsViewController.swift */,
 				E58D6F5B26827E6800926134 /* NotLoggedManagerAccountViewController.swift */,
 				E58D6F792682B21700926134 /* LoggedManagerAccountViewController.swift */,
-				E51F9E89267FD38D00ABAC36 /* PopupConfirmViewController.swift */,
 				E58D6F7E2682D2E900926134 /* QRGeneratorViewController.swift */,
 			);
 			path = Presenter;
@@ -279,7 +276,6 @@
 				E5F0A010268243A300F59E59 /* SaveActions.swift in Sources */,
 				E58D6F542682798600926134 /* ProductAddMethodsViewController.swift in Sources */,
 				E58D6F7A2682B21700926134 /* LoggedManagerAccountViewController.swift in Sources */,
-				E51F9E8A267FD38D00ABAC36 /* PopupConfirmViewController.swift in Sources */,
 				E58D6F772682925900926134 /* DesignableView.swift in Sources */,
 				E5F0A015268270D300F59E59 /* Product.swift in Sources */,
 				E58D2080267EB0E30065B480 /* CustomProductsListTableViewCell.swift in Sources */,

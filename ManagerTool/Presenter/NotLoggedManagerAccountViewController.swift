@@ -15,6 +15,10 @@ class NotLoggedManagerAccountViewController: UIViewController {
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    let successLogin = UIAlertController(title: "Вы успешно вошли",
+                                              message: nil,
+                                              preferredStyle: .alert)
+    
     override func viewDidLoad() {
         super.viewDidLoad()        
         
@@ -25,6 +29,8 @@ class NotLoggedManagerAccountViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
         errorLabel.isHidden = true
         errorLabel.text = ""
+        
+        successLogin.addAction(UIAlertAction(title: "Хорошо", style: .cancel, handler: nil))
     }
     
     @objc func dismissKeyboard() {
@@ -79,7 +85,5 @@ class NotLoggedManagerAccountViewController: UIViewController {
             // In case of success log in
             _ = self?.navigationController?.popToRootViewController(animated: true)
         }
-        
-        
     }
 }

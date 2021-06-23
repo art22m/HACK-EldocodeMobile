@@ -93,14 +93,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0M-6J-hXP">
-                                        <rect key="frame" x="333" y="25" width="56" height="55"/>
+                                        <rect key="frame" x="333" y="15" width="56" height="55"/>
                                         <state key="normal" image="AccountLogo"/>
                                         <connections>
                                             <action selector="accountTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="52C-Sr-OBZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pER-ze-fel">
-                                        <rect key="frame" x="25" y="25" width="72" height="55"/>
+                                        <rect key="frame" x="25" y="15" width="72" height="55"/>
                                         <state key="normal" image="SaveLogo"/>
                                         <connections>
                                             <action selector="saveTap:" destination="WE8-50-Raf" eventType="touchUpInside" id="dGx-Zx-Pr0"/>
@@ -111,8 +111,8 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="i0M-6J-hXP" secondAttribute="trailing" constant="25" id="3tg-KW-XVp"/>
                                     <constraint firstAttribute="bottom" secondItem="PnE-oK-Ffk" secondAttribute="bottom" constant="15" id="7lZ-np-npR"/>
-                                    <constraint firstAttribute="bottom" secondItem="i0M-6J-hXP" secondAttribute="bottom" constant="20" id="Jbp-MO-PMZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="pER-ze-fel" secondAttribute="bottom" constant="20" id="Wd3-Vd-94D"/>
+                                    <constraint firstAttribute="bottom" secondItem="i0M-6J-hXP" secondAttribute="bottom" constant="30" id="Jbp-MO-PMZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="pER-ze-fel" secondAttribute="bottom" constant="30" id="Wd3-Vd-94D"/>
                                     <constraint firstItem="pER-ze-fel" firstAttribute="leading" secondItem="lw3-tF-CC7" secondAttribute="leading" constant="25" id="aeC-d7-XqB"/>
                                     <constraint firstAttribute="height" constant="100" id="bIQ-r6-dEi"/>
                                     <constraint firstItem="PnE-oK-Ffk" firstAttribute="centerX" secondItem="lw3-tF-CC7" secondAttribute="centerX" id="luv-2e-SBj"/>
