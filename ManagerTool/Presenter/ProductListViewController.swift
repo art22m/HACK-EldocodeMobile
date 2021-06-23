@@ -22,10 +22,15 @@ class ProductListViewController: UIViewController {
     private var managerID: String? = nil
     private lazy var db = Firestore.firestore()
     private let saveActions = SaveActions()
-    let alertNoLogin = UIAlertController(title: "Вы не авторизованы.",
-                                         message: "Пожалуйста, войдите под своим уникальным номером.",
+    let alertNoLogin = UIAlertController(title: "Вы не авторизованы",
+                                         message: "Пожалуйста, войдите под своим уникальным номером",
                                          preferredStyle: .alert)
-    
+    let alertQuestion = UIAlertController(title: "Сохранить заказ",
+                                              message: "У клиента есть карта лояльности?",
+                                              preferredStyle: .alert)
+    let alertInputPhone = UIAlertController(title: "Номер телефона",
+                                              message: "Для сохранения требуется номер телефона клиента",
+                                              preferredStyle: .alert)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +52,25 @@ class ProductListViewController: UIViewController {
             }
         }
         alertNoLogin.addAction(okAction)
+        
+        // Alert #2
+        alertQuestion.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        alertQuestion.addAction(UIAlertAction(title: "Да", style: .default, handler: { [self] action in
+            self.present(alertInputPhone, animated: true, completion: nil)
+        }))
+        alertQuestion.addAction(UIAlertAction(title: "Нет", style: .default, handler: { [self] action in
+            print("Need QR generator")
+            sendToDataBase()
+        }))
+        
+        // Alert #3
+        alertInputPhone.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+        alertInputPhone.addAction(UIAlertAction(title: "Отправить", style: .default, handler: { [self] action in
+            let textField = alertInputPhone.textFields![0] as UITextField
+            sendToDataBase(customerPhone: textField.text ?? "")
+        }))
+        alertInputPhone.addTextField()
+        alertInputPhone.textFields![0].placeholder = "+79991231212"
 }
     
     
@@ -69,12 +93,21 @@ class ProductListViewController: UIViewController {
     }
     
     @IBAction func sendTap(_ sender: Any) {
-        if FirebaseAuth.Auth.auth().currentUser != nil {
-            if let id = managerID {
-                saveActions.saveProducts(products: productsList, manager: id, customerPhone: nil)
-            }
-        } else {
+        if FirebaseAuth.Auth.auth().currentUser == nil {
             self.present(alertNoLogin, animated: true, completion: nil)
+        } else {
+            self.present(alertQuestion, animated: true, completion: nil)
+        }
+    }
+    
+    private func sendToDataBase(customerPhone: String = "") {
+        let managerID: String = FirebaseAuth.Auth.auth().currentUser?.uid ?? ""
+        print(customerPhone)
+        saveActions.saveProducts(products: productsList, managerID: managerID, customerPhone: customerPhone)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5)  {
+            self.productsList.removeAll()
+            self.productListTableView.reloadData()
         }
     }
 }
